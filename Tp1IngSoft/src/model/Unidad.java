@@ -1,0 +1,52 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model;
+
+/**
+ *
+ * @author josdan
+ */
+public class Unidad {
+    
+    private int nroUnidad;
+    private int cantAsientos;
+    private String dominio;
+    
+    public Unidad () {
+        
+    }
+    
+    public Unidad (int nroUnidad, int cantAsientos, String dominio) {
+        this.nroUnidad = nroUnidad;
+        this.cantAsientos = cantAsientos;
+        this.dominio = dominio;
+    }
+    
+    public int getNroUnidad() {
+        return nroUnidad;
+    }
+
+    public void setNroUnidad(int nroUnidad) {
+        this.nroUnidad = nroUnidad;
+    }
+
+    public int getCantAsientos() {
+        return cantAsientos;
+    }
+
+    public void setCantAsientos(int cantAsientos) {
+        this.cantAsientos = cantAsientos;
+    }
+
+    public String getDominio() {
+        return dominio;
+    }
+
+    public void setDominio(String dominio) {
+        this.dominio = dominio;
+    }
+    
+}
