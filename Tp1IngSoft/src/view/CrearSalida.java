@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import model.Paquete;
 import model.Unidad;
 import presenter.Agencia;
@@ -206,9 +207,15 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
     }//GEN-LAST:event_cmbUnidadesItemStateChanged
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        this.presentador.ingresarFecha(this.obtenerFecha());
-        this.presentador.ingresarCupo(this.obtenerCupos());
-        this.presentador.confirmarSalida();
+        if (this.validarCampos()) {
+            this.presentador.ingresarFecha(this.obtenerFecha());
+            this.presentador.ingresarCupo(this.obtenerCupos());
+            this.presentador.confirmarSalida();
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "COMPLETE LOS CAMPOS OBLIGATORIOS",
+                    "MENSAJE", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
@@ -291,6 +298,29 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
     @Override
     public int obtenerCupos() {
         return Integer.parseInt(this.txtCupos.getText());
+    }
+
+    @Override
+    public void mostrarAlerta(String msj, String tipo) {
+        if (tipo.equals("ADVERTENCIA")) {
+            JOptionPane.showMessageDialog(this, msj, "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        }
+        if (tipo.equals("ERROR")) {
+            JOptionPane.showMessageDialog(this, msj, "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        if (tipo.equals("INFO")) {
+            JOptionPane.showMessageDialog(this, msj, "INFO", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public boolean validarCampos() {
+        if (!this.cmbPaquetes.getSelectedItem().toString().equals("---Seleccionar Paquete---")
+                && !this.cmbUnidades.getSelectedItem().toString().equals("---Seleccionar Unidad---")
+                && !this.txtCupos.getText().equals("")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 

@@ -95,9 +95,10 @@ public class Agencia {
                 getNroUnidad())) {
             this.salida.setEstado(Estado.EnVenta);
             this.paquete.agregarSalida(salida);
+            this.vistaCrearSalida.mostrarAlerta("SALIDA CONFIRMADA!", "INFO");
             System.out.println("Salida Confiramada!");
         } else {
-            // avisar a la interfaz que no se pudo vincular la salida con la unidad
+            this.vistaCrearSalida.mostrarAlerta("NO SE PUDO VINCULAR LA UNIDAD", "ERROR");
         }
     }
 

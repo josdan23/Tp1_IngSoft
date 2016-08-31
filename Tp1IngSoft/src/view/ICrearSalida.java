@@ -22,4 +22,6 @@ public interface ICrearSalida {
     Date obtenerFecha();
 
     int obtenerCupos();
+
+    void mostrarAlerta(String msj, String tipo);
 }
