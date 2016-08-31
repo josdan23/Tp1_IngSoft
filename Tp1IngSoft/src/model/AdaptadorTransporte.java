@@ -44,7 +44,7 @@ public class AdaptadorTransporte implements IAdaptadorTransporte {
                 unidadActual.setDominio(unidadesSvc.getUnidadSvc().get(i).getDominio().getValue());
                 unidadActual.setMarca(unidadesSvc.getUnidadSvc().get(i).getMarca().getValue());
                 unidadActual.setTipo(unidadesSvc.getUnidadSvc().get(i).getTipo().getValue());
-
+                  
                 //agregar unidad a la lista
                 listaUnidades.add(unidadActual);
             }
