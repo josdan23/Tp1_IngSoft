@@ -61,4 +61,13 @@ public class Salida {
 
     public void agregarReserva(Reserva reserva) {
     }
+
+    public String getCodSalida() {
+        return codSalida;
+    }
+
+    public void setCodSalida(String codSalida) {
+        this.codSalida = codSalida;
+    }
+
 }
