@@ -40,6 +40,14 @@ public class Agencia {
      */
     private Reserva reserva;
     private AdaptadorTransporte adaptadorTransporte;
+    
+    /*
+        Este atributo sirve para obtener el precio del paquete y agregarlo
+        a la reserva.
+    */
+    private ArrayList<BasePaquete> listaDeBasePaquetes;
+    private BasePaquete basePaquete;
+    private float total;
 
     public Agencia(ICrearSalida vista) {
         this.paquetes = new ArrayList<>();
@@ -150,6 +158,12 @@ public class Agencia {
         }
 
         //ATENCION! FALTA CALCULAR EL TOTAL DE LA RESERVA
+        
+        this.basePaquete = this.paquete.getListaBasePaquetes().get(cantPasajeros - 1);
+        
+        this.total = this.basePaquete.getPrecio();
+        
+        this.reserva.setTotal(total);
     }
 
     public void seleccionarButaca(int nroButaca) {

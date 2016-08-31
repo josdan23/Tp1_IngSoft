@@ -11,14 +11,18 @@ public class Reserva {
     private int cantPasajeros;
     private Cliente cliente;
     private ArrayList<Butaca> butacas;
+    private float total;
+    private Salida salida;
 
     public Reserva() {
     }
 
-    public Reserva(int cantPasajeros, Cliente cliente) {
+    public Reserva(int cantPasajeros, Cliente cliente, float total, Salida salida) {
         this.cantPasajeros = cantPasajeros;
         this.cliente = cliente;
         this.butacas = new ArrayList<>();
+        this.total = total;
+        this.salida = salida;
     }
 
     public int getCantPasajeros() {
@@ -46,7 +50,7 @@ public class Reserva {
     }
 
     public void agregarButaca(Butaca butaca) {
-
+        this.setButacas(butaca);
     }
 
     //obtiene el nro de butacas que estan reservadas
@@ -60,6 +64,7 @@ public class Reserva {
     }
 
     public void agregarSalida(Salida salida) {
+        this.setSalida(salida);
     }
 
     public void ingresarCliente(String nombre, long dni, String telefono,
@@ -68,4 +73,21 @@ public class Reserva {
         this.setCliente(new Cliente(nombre, dni, telefono, correo));
     }
 
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    public Salida getSalida() {
+        return salida;
+    }
+
+    public void setSalida(Salida salida) {
+        this.salida = salida;
+    }
+    
+    
 }
