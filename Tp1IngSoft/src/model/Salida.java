@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,6 +14,7 @@ public class Salida {
     private int cupo;
     private Estado estado;
     private Unidad unidad;
+    private ArrayList<Reserva> reservas;
 
     public Salida() {
     }
@@ -22,6 +24,7 @@ public class Salida {
         this.cupo = cupo;
         this.estado = estado;
         this.unidad = unidad;
+        this.reservas = new ArrayList<>();
     }
 
     public Date getFecha() {
@@ -56,18 +59,28 @@ public class Salida {
         this.unidad = unidad;
     }
 
-    public void agregarUnidad(Unidad unidad) {
-    }
-
-    public void agregarReserva(Reserva reserva) {
-    }
-
     public String getCodSalida() {
         return codSalida;
     }
 
     public void setCodSalida(String codSalida) {
         this.codSalida = codSalida;
+    }
+
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
+    public void agregarUnidad(Unidad unidad) {
+        setUnidad(unidad);
+    }
+
+    public void agregarReserva(Reserva reserva) {
+        getReservas().add(reserva);
     }
 
 }
