@@ -13,10 +13,10 @@ package model;
 public interface IAdaptadorTransporte {
     
     //proporciona las unidades disponibles para una determinada ciudad,
-    public ArrayList<Unidad> obtenerUnidad (String codGrupo, int codCiudad);
+    public ArrayList<Unidad> obtenerUnidades (String codGrupo, int codCiudad);
     
     //obtiene una lista de ciudades  para las cuales se puede solicitar unidades
-    public ArrayList<Ciudad> obtenerCiudad (String codGrupo);
+    public ArrayList<Ciudad> obtenerCiudades (String codGrupo);
     
     //Permite vicncular una unidad a la salida
     public Resultado vicularUnidad (String codGrupo, int nroUnidad);
