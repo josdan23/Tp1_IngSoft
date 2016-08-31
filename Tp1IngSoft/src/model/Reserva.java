@@ -10,6 +10,7 @@ public class Reserva {
 
     private int cantPasajeros;
     private Cliente cliente;
+    private ArrayList<Butaca> butacas;
 
     public Reserva() {
     }
@@ -17,6 +18,7 @@ public class Reserva {
     public Reserva(int cantPasajeros, Cliente cliente) {
         this.cantPasajeros = cantPasajeros;
         this.cliente = cliente;
+        this.butacas = new ArrayList<>();
     }
 
     public int getCantPasajeros() {
