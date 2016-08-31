@@ -5,10 +5,11 @@ package view;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class Principal extends javax.swing.JFrame {
-
+    
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("SISTEMA AGENCIA");
     }
 
     /**

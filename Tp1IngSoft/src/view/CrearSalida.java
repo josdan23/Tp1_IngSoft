@@ -15,15 +15,16 @@ import presenter.Agencia;
  * @author josdan
  */
 public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
-
+    
     private Agencia presentador;
     private DefaultComboBoxModel paquetesModel;
     private HashMap<String, String> paquetes;
     private DefaultComboBoxModel unidadesModel;
     private HashMap<String, Integer> unidades;
-
+    
     public CrearSalida() {
         initComponents();
+        this.setTitle("CREAR SALIDA");
         this.paquetesModel = new DefaultComboBoxModel();
         this.unidadesModel = new DefaultComboBoxModel();
         this.presentador = new Agencia(this);
@@ -63,7 +64,7 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
         setMinimumSize(new java.awt.Dimension(800, 600));
 
         lblNuevaSalida.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblNuevaSalida.setText("Crear Nueva Salida");
+        lblNuevaSalida.setText("CREAR NUEVA SALIDA");
 
         jLabel1.setText("PAQUETE");
 
@@ -211,7 +212,7 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
                     "MENSAJE", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
-
+    
     @Override
     public void cargarPaquetes(ArrayList<Paquete> paquetes) {
         this.paquetesModel.addElement("---Seleccionar Paquete---");
@@ -221,12 +222,12 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
         }
         this.cmbPaquetes.setModel(paquetesModel);
     }
-
+    
     @Override
     public String obtenerPaqueteSeleccionado() {
         return this.cmbPaquetes.getSelectedItem().toString();
     }
-
+    
     @Override
     public void cargarUnidades(ArrayList<Unidad> unidades) {
         this.unidadesModel.removeAllElements();
@@ -238,26 +239,26 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
         }
         this.cmbUnidades.setModel(this.unidadesModel);
     }
-
+    
     @Override
     public String obtenerUnidadSeleccionado() {
         return this.cmbUnidades.getSelectedItem().toString();
     }
-
+    
     @Override
     public Date obtenerFecha() {
         int day = this.calendario.getDayChooser().getDay();
         int month = this.calendario.getMonthChooser().getMonth();
         int year = this.calendario.getYearChooser().getYear();
-
+        
         return new Date(day, month, year);
     }
-
+    
     @Override
     public int obtenerCupos() {
         return Integer.parseInt(this.txtCupos.getText());
     }
-
+    
     @Override
     public void mostrarAlerta(String msj, String tipo) {
         if (tipo.equals("ADVERTENCIA")) {
@@ -270,7 +271,7 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
             JOptionPane.showMessageDialog(this, msj, "INFO", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
+    
     public boolean validarCampos() {
         if (!this.cmbPaquetes.getSelectedItem().toString().equals("---Seleccionar Paquete---")
                 && !this.cmbUnidades.getSelectedItem().toString().equals("---Seleccionar Unidad---")
