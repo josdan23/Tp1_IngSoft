@@ -18,33 +18,32 @@ import org.tempuri.IBusServiceObtenerUnidadesBusServiceFaultFaultFaultMessage;
  *
  * @author josdan
  */
-public class AdaptadorTransporte implements IAdaptadorTransporte{
+public class AdaptadorTransporte implements IAdaptadorTransporte {
 
     @Override
     public ArrayList<Unidad> obtenerUnidades(String codGrupo, int codCiudad) {
-        
+
         ArrayList<Unidad> listaUnidades = new ArrayList<Unidad>();
-        
+
         try {
-            ArrayOfUnidadSvc unidadesSvc = obtenerUnidades_1 (codGrupo, codCiudad);
-            
+            ArrayOfUnidadSvc unidadesSvc = obtenerUnidades_1(codGrupo, codCiudad);
+
             Unidad unidadActual = new Unidad();
-            for (int i=0; i < unidadesSvc.getUnidadSvc().size(); i++) {
-                
+            for (int i = 0; i < unidadesSvc.getUnidadSvc().size(); i++) {
+
                 //crear una unidad
-                unidadActual.setNroUnidad(unidadesSvc.getUnidadSvc().get(i).getNumero());
-                unidadActual.setCantAsientos(unidadesSvc.getUnidadSvc().get(i).getCantidadButacas());
-                unidadActual.setDominio(unidadesSvc.getUnidadSvc().get(i).getDominio());
-                
-                
+                unidadActual.setNroUnidad(unidadesSvc.getUnidadSvc().get(i).getNumero().intValue());
+                unidadActual.setCantAsientos(unidadesSvc.getUnidadSvc().get(i).getCantidadButacas().intValue());
+                unidadActual.setDominio(unidadesSvc.getUnidadSvc().get(i).getDominio().getValue());
+
                 //agregar unidad a la lista
                 listaUnidades.add(unidadActual);
             }
-            
+
         } catch (IBusServiceObtenerUnidadesBusServiceFaultFaultFaultMessage ex) {
             Logger.getLogger(AdaptadorTransporte.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return listaUnidades;
     }
 
@@ -69,13 +68,10 @@ public class AdaptadorTransporte implements IAdaptadorTransporte{
     }
 
     //METODOS QUE PROPORCIONA LA API
-    
     private static ArrayOfUnidadSvc obtenerUnidades_1(java.lang.String codigo, java.lang.Integer ciudad) throws IBusServiceObtenerUnidadesBusServiceFaultFaultFaultMessage {
         org.tempuri.BusService service = new org.tempuri.BusService();
         org.tempuri.IBusService port = service.getSGEBusService();
         return port.obtenerUnidades(codigo, ciudad);
     }
-    
-    
-    
+
 }
