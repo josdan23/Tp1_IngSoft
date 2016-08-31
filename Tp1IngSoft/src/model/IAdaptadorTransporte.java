@@ -10,22 +10,23 @@ package model;
  *
  * @author josdan
  */
+import java.util.ArrayList;
+
 public interface IAdaptadorTransporte {
     
     //proporciona las unidades disponibles para una determinada ciudad,
-    public ArrayList<Unidad> obtenerUnidades (String codGrupo, int codCiudad);
+    ArrayList<Unidad> obtenerUnidades (String codGrupo, int codCiudad);
     
     //obtiene una lista de ciudades  para las cuales se puede solicitar unidades
-    public ArrayList<Ciudad> obtenerCiudades (String codGrupo);
+    ArrayList<Ciudad> obtenerCiudades (String codGrupo);
     
     //Permite vicncular una unidad a la salida
-    public Resultado vicularUnidad (String codGrupo, int nroUnidad);
+    Resultado vicularUnidad (String codGrupo, int nroUnidad);
     
     //obteine una lista de todas las butacas asociadas
-    public ArrayList<Butaca> obtenerButacas (String codGrupo, int nroUnidad);
+    ArrayList<Butaca> obtenerButacas (String codGrupo, int nroUnidad);
     
     //Permite realizar la reserva de las butacas elegidas
-    public Resultado reservarButaca (String codGrupo, int nroUnidad, int[] nroButacasReservadas);
-            
+    Resultado reservarButaca (String codGrupo, int nroUnidad, int[] nroButacasReservadas);
     
 }

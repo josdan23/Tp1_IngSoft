@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://ds.dyndns.org:9000/BusService?wsdl" uri="xml-resources/web-service-references/BusService/wsdl/ds.dyndns.org_9000/BusService.wsdl"/>
+    <system systemId="http://ds.dyndns.org:9000/BusService?wsdl=wsdl0" uri="xml-resources/web-service-references/BusService/wsdl/ds.dyndns.org_9000/BusService.wsdl_wsdl0.wsdl"/>
+    <system systemId="http://ds.dyndns.org:9000/BusService?xsd=xsd0" uri="xml-resources/web-service-references/BusService/wsdl/ds.dyndns.org_9000/BusService.xsd_xsd0.xsd"/>
+    <system systemId="http://ds.dyndns.org:9000/BusService?xsd=xsd3" uri="xml-resources/web-service-references/BusService/wsdl/ds.dyndns.org_9000/BusService.xsd_xsd3.xsd"/>
+    <system systemId="http://ds.dyndns.org:9000/BusService?xsd=xsd1" uri="xml-resources/web-service-references/BusService/wsdl/ds.dyndns.org_9000/BusService.xsd_xsd1.xsd"/>
+    <system systemId="http://ds.dyndns.org:9000/BusService?xsd=xsd2" uri="xml-resources/web-service-references/BusService/wsdl/ds.dyndns.org_9000/BusService.xsd_xsd2.xsd"/>
+    <system systemId="http://ds.dyndns.org:9000/BusService?xsd=xsd4" uri="xml-resources/web-service-references/BusService/wsdl/ds.dyndns.org_9000/BusService.xsd_xsd4.xsd"/>
+</catalog>
