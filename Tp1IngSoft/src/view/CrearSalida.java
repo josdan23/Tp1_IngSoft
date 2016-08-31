@@ -19,6 +19,7 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
     private DefaultComboBoxModel paquetesModel;
     private HashMap<String, String> paquetes;
     private DefaultComboBoxModel unidadesModel;
+    private HashMap<String, Integer> unidades;
 
     public CrearSalida() {
         initComponents();
@@ -26,6 +27,7 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
         this.unidadesModel = new DefaultComboBoxModel();
         this.presentador = new Agencia(this);
         this.paquetes = new HashMap<>();
+        this.unidades = new HashMap<>();
         this.presentador.comenzarNuevaSalida();
         //poner la ventana al centro
         this.setLocationRelativeTo(null);
@@ -72,6 +74,12 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
 
         jLabel2.setText("UNIDAD");
 
+        cmbUnidades.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbUnidadesItemStateChanged(evt);
+            }
+        });
+
         panelFecha.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "FECHA"));
 
         javax.swing.GroupLayout panelFechaLayout = new javax.swing.GroupLayout(panelFecha);
@@ -96,6 +104,11 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
         btnCancelar.setText("CANCELAR");
 
         btnConfirmar.setText("CONFIRMAR");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelCrearSalidaLayout = new javax.swing.GroupLayout(panelCrearSalida);
         panelCrearSalida.setLayout(panelCrearSalidaLayout);
@@ -178,9 +191,25 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbPaquetesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPaquetesItemStateChanged
-        this.presentador.seleccionarPaquetes(this.paquetes.get(evt.getItem().toString()));
-        System.out.println(evt.getItem().toString());
+        if (!evt.getItem().toString().equals("---Seleccionar Paquete---")) {
+            this.presentador.seleccionarPaquetes(this.paquetes.get(evt.getItem().toString()));
+            System.out.println(evt.getItem().toString());
+        }
     }//GEN-LAST:event_cmbPaquetesItemStateChanged
+
+    private void cmbUnidadesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbUnidadesItemStateChanged
+        if (!evt.getItem().toString().equals("---Seleccionar Unidad---")) {
+            int unidad = this.unidades.get(evt.getItem().toString()).intValue();
+            this.presentador.seleccionarUnidad(unidad);
+            System.out.println(unidad);
+        }
+    }//GEN-LAST:event_cmbUnidadesItemStateChanged
+
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        this.presentador.ingresarFecha(this.obtenerFecha());
+        this.presentador.ingresarCupo(this.obtenerCupos());
+        this.presentador.confirmarSalida();
+    }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,8 +265,11 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
     @Override
     public void cargarUnidades(ArrayList<Unidad> unidades) {
         this.unidadesModel.removeAllElements();
+        this.unidadesModel.addElement("---Seleccionar Unidad---");
         for (Unidad u : unidades) {
-            this.unidadesModel.addElement(u.getDominio());
+            String element = u.getNroUnidad() + ", " + u.getMarca() + ", " + u.getTipo();
+            this.unidadesModel.addElement(element);
+            this.unidades.put(element, u.getNroUnidad());
         }
         this.cmbUnidades.setModel(this.unidadesModel);
     }
@@ -253,7 +285,7 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
         int month = this.calendario.getMonthChooser().getMonth();
         int year = this.calendario.getYearChooser().getYear();
 
-        return null;
+        return new Date(day, month, year);
     }
 
     @Override

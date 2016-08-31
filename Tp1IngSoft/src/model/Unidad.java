@@ -10,21 +10,25 @@ package model;
  * @author josdan
  */
 public class Unidad {
-    
+
     private int nroUnidad;
     private int cantAsientos;
     private String dominio;
-    
-    public Unidad () {
-        
+    private String marca;
+    private String tipo;
+
+    public Unidad() {
+
     }
-    
-    public Unidad (int nroUnidad, int cantAsientos, String dominio) {
+
+    public Unidad(int nroUnidad, int cantAsientos, String dominio, String marca, String tipo) {
         this.nroUnidad = nroUnidad;
         this.cantAsientos = cantAsientos;
         this.dominio = dominio;
+        this.marca = marca;
+        this.tipo = tipo;
     }
-    
+
     public int getNroUnidad() {
         return nroUnidad;
     }
@@ -48,5 +52,21 @@ public class Unidad {
     public void setDominio(String dominio) {
         this.dominio = dominio;
     }
-    
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
 }

@@ -17,7 +17,7 @@ import view.ICrearSalida;
  * @author Fernández Pablo
  */
 public class Agencia {
-    
+
     private ICrearSalida vistaCrearSalida;
     private ArrayList<Paquete> paquetes;
     /*Esta coleccion hace referencia a las salidas en venta obtenidas durante
@@ -40,7 +40,7 @@ public class Agencia {
      */
     private Reserva reserva;
     private AdaptadorTransporte adaptadorTransporte;
-    
+
     public Agencia(ICrearSalida vista) {
         this.paquetes = new ArrayList<>();
         this.salidas = new ArrayList<>();
@@ -50,12 +50,12 @@ public class Agencia {
         this.adaptadorTransporte = new AdaptadorTransporte();
         this.vistaCrearSalida = vista;
     }
-    
+
     public void comenzarNuevaSalida() {
         this.paquetes = catalogoPaquetes.obtenerPaquetes();
         this.vistaCrearSalida.cargarPaquetes(paquetes);
     }
-    
+
     public void seleccionarPaquetes(String codPaquete) {
         for (Paquete p : this.paquetes) {
             if (p.getCodPaquete().equals(codPaquete)) {
@@ -71,9 +71,9 @@ public class Agencia {
         } else {
             //avisar a la interfaz grafica que no se encontro el paquete
         }
-        
+
     }
-    
+
     public void seleccionarUnidad(int nroUnidad) {
         for (Unidad u : this.unidades) {
             if (u.getNroUnidad() == nroUnidad) {
@@ -81,30 +81,31 @@ public class Agencia {
             }
         }
     }
-    
+
     public void ingresarFecha(Date fecha) {
         this.salida.setFecha(fecha);
     }
-    
+
     public void ingresarCupo(int cupo) {
         this.salida.setCupo(cupo);
     }
-    
+
     public void confirmarSalida() {
         if (this.adaptadorTransporte.vincularUnidad(this.salida.getUnidad().
                 getNroUnidad())) {
             this.salida.setEstado(Estado.EnVenta);
             this.paquete.agregarSalida(salida);
+            System.out.println("Salida Confiramada!");
         } else {
             // avisar a la interfaz que no se pudo vincular la salida con la unidad
         }
     }
-    
+
     public void crearReserva() {
         this.reserva = new Reserva();
         this.paquetes = catalogoPaquetes.obtenerPaquetes();
     }
-    
+
     public void seleccionarPaquetesReserva(String codPaquete) {
         for (Paquete p : this.paquetes) {
             if (p.getCodPaquete().equals(codPaquete)) {
@@ -118,7 +119,7 @@ public class Agencia {
             //avisar a la interfaz grafica que no se encontro el paquete
         }
     }
-    
+
     public void seleccionarSalida(String codSalida) {
         for (Salida s : this.salidas) {
             if (s.getCodSalida().equals(codSalida)) {
@@ -134,7 +135,7 @@ public class Agencia {
             //avisar a la interfaz grafica que no se encontro la salida
         }
     }
-    
+
     public void ingresarCantPasajeros(int cantPasajeros) {
         ArrayList<Butaca> butacasDisp = new ArrayList<>();
         for (Butaca b : butacas) {
@@ -149,7 +150,7 @@ public class Agencia {
 
         //ATENCION! FALTA CALCULAR EL TOTAL DE LA RESERVA
     }
-    
+
     public void seleccionarButaca(int nroButaca) {
         for (Butaca b : this.butacas) {
             if (b.getNroButaca() == nroButaca && !b.isEstado()) {
@@ -157,12 +158,12 @@ public class Agencia {
             }
         }
     }
-    
+
     public void ingresarCliente(String nombre, long dni, String telefono,
             String correo) {
         this.reserva.ingresarCliente(nombre, dni, telefono, correo);
     }
-    
+
     public void confirmarReserva() {
         int[] nroDeButacas = this.reserva.obtenerButacas();
         if (this.adaptadorTransporte.reservarButacas(this.salida.getUnidad().
