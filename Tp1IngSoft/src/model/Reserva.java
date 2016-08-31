@@ -40,10 +40,10 @@ public class Reserva {
     }
 
     public ArrayList<Butaca> obtenerButacas() {
-
+        return new ArrayList<>();
     }
 
-    public void agregarSalida(/*Salida salida*/) {
+    public void agregarSalida(Salida salida) {
     }
 
     public void ingresarCliente(String nombre, long dni, String telefono,

@@ -8,6 +8,7 @@ import java.util.Date;
  */
 public class Salida {
 
+    private String codSalida;
     private Date fecha;
     private int cupo;
     private Estado estado;
