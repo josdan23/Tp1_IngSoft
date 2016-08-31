@@ -1,11 +1,16 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.Date;
+import model.Paquete;
+import model.Unidad;
+
 /**
  *
  * @author josdan
  */
-public class CrearSalida extends javax.swing.JFrame {
-    
+public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
+
     public CrearSalida() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -179,9 +184,38 @@ public class CrearSalida extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CrearSalida().setVisible(true);
-                
+
             }
         });
+    }
+
+    @Override
+    public void cargarPaquetes(ArrayList<Paquete> paquetes) {
+
+    }
+
+    @Override
+    public String obtenerPaqueteSeleccionado() {
+        return this.cmbPaquetes.getSelectedItem().toString();
+    }
+
+    @Override
+    public void cargarUnidades(ArrayList<Unidad> unidades) {
+
+    }
+
+    @Override
+    public String obtenerUnidadSeleccionado() {
+
+    }
+
+    @Override
+    public Date obtenerFecha() {
+
+    }
+
+    @Override
+    public int obtenerCupos() {
     }
 
 
@@ -199,4 +233,5 @@ public class CrearSalida extends javax.swing.JFrame {
     private javax.swing.JPanel panelFecha;
     private javax.swing.JTextField txtCupos;
     // End of variables declaration//GEN-END:variables
+
 }
