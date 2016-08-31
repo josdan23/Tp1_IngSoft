@@ -36,16 +36,27 @@ public class Reserva {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+    
+    public void setButacas (ArrayList<Butaca> butacas) {
+        this.butacas = butacas;
+    }
+    
+    public ArrayList<Butaca> getButacas() {
+        return butacas;
+    }
 
     public void agregarButaca(Butaca butaca) {
 
     }
 
+    //obtiene el nro de butacas que estan reservadas
     public int[] obtenerButacas() {
         int butacas[] = new int[this.getCantPasajeros()];
         
-        for( Butaca b : )
-        return null;
+        for(int i = 0; i < butacas.length; i++ ) {
+            butacas[i] = this.getButacas().get(i).getNroButaca();
+        }
+        return butacas;
     }
 
     public void agregarSalida(Salida salida) {
