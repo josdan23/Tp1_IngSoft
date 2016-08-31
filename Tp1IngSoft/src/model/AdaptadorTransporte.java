@@ -5,6 +5,7 @@
  */
 package model;
 
+import com.microsoft.schemas._2003._10.serialization.arrays.ArrayOfint;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -24,15 +25,18 @@ import org.tempuri.IBusServiceVincularUnidadBusServiceFaultFaultFaultMessage;
  * @author josdan
  */
 public class AdaptadorTransporte implements IAdaptadorTransporte {
+    
+    //codigo de grupo asignado
+    final static String CODIGO_GRUPO = "5e17e947-2fa9-446f-89c0-a1257b3069b8";
 
     @Override
-    public ArrayList<Unidad> obtenerUnidades(String codGrupo, int codCiudad) {
+    public ArrayList<Unidad> obtenerUnidades (int codCiudad) {
 
         ArrayList<Unidad> listaUnidades = new ArrayList<Unidad>();
         
         try {
             
-            ArrayOfUnidadSvc unidadesSvc = obtenerUnidades_1(codGrupo, codCiudad);
+            ArrayOfUnidadSvc unidadesSvc = obtenerUnidades_1(CODIGO_GRUPO, codCiudad);
             Unidad unidadActual = new Unidad();
             for (int i = 0; i < unidadesSvc.getUnidadSvc().size(); i++) {
                 
@@ -56,13 +60,13 @@ public class AdaptadorTransporte implements IAdaptadorTransporte {
     }
 
     @Override
-    public ArrayList<Ciudad> obtenerCiudades(String codGrupo) {
+    public ArrayList<Ciudad> obtenerCiudades() {
         
         ArrayList<Ciudad> listaCiudades = new ArrayList<Ciudad>();
        
         try {
                 
-            ArrayOfCiudadSvc ciudadesSvc = obtenerCiudades_1(codGrupo);
+            ArrayOfCiudadSvc ciudadesSvc = obtenerCiudades_1(CODIGO_GRUPO);
             
             Ciudad ciudad = new Ciudad();
             
@@ -82,18 +86,30 @@ public class AdaptadorTransporte implements IAdaptadorTransporte {
     }
 
     @Override
-    public Resultado vincularUnidad(String codGrupo, int nroUnidad) {
+    public boolean vincularUnidad(int nroUnidad) {
+        
+        boolean resultado = false;
+        
+        try {
+            resultado = vincularUnidad_1(CODIGO_GRUPO, nroUnidad).isCorrecto();
+            
+        } catch (IBusServiceVincularUnidadBusServiceFaultFaultFaultMessage ex) {
+            Logger.getLogger(AdaptadorTransporte.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            return resultado;
+        }
         
     }
 
     @Override
-    public ArrayList<Butaca> obtenerButacas(String codGrupo, int nroUnidad) {
+    public ArrayList<Butaca> obtenerButacas(int nroUnidad) {
         
         ArrayList<Butaca> listaButacas = new ArrayList<Butaca>();
         
         try {
             
-            ArrayOfButacaSvc butacasSvc = obtenerButacas_1(codGrupo, nroUnidad);
+            ArrayOfButacaSvc butacasSvc = obtenerButacas_1(CODIGO_GRUPO, nroUnidad);
             
             Butaca butaca = new Butaca();
             
@@ -112,8 +128,24 @@ public class AdaptadorTransporte implements IAdaptadorTransporte {
     }
 
     @Override
-    public Resultado reservarButacas(String codGrupo, int nroUnidad, int[] nroButacasReservadas) {
+    public boolean reservarButacas(int nroUnidad, int[] nroButacasReservadas) {
+        boolean resultado = false;
         
+        ArrayOfint o = new ArrayOfint();
+        
+        for ( int nroButaca : nroButacasReservadas){
+            o.getInt().add(nroButaca);
+        }
+        
+        try {
+            resultado = reservarButacas_1(CODIGO_GRUPO, nroUnidad, o).isCorrecto();
+            
+        } catch (IBusServiceReservarButacasBusServiceFaultFaultFaultMessage ex) {
+            Logger.getLogger(AdaptadorTransporte.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            return resultado;
+        }
     }
 
     

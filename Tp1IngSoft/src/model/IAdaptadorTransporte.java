@@ -16,18 +16,18 @@ import org.tempuri.IBusServiceObtenerButacasBusServiceFaultFaultFaultMessage;
 public interface IAdaptadorTransporte {
     
     //proporciona las unidades disponibles para una determinada ciudad,
-    ArrayList<Unidad> obtenerUnidades (String codGrupo, int codCiudad);
+    ArrayList<Unidad> obtenerUnidades (int codCiudad);
     
     //obtiene una lista de ciudades  para las cuales se puede solicitar unidades
-    ArrayList<Ciudad> obtenerCiudades (String codGrupo);
+    ArrayList<Ciudad> obtenerCiudades ();
     
     //Permite vicncular una unidad a la salida
-    Resultado vincularUnidad (String codGrupo, int nroUnidad);
+    boolean vincularUnidad ( int nroUnidad);
     
     //obteine una lista de todas las butacas asociadas
-    ArrayList<Butaca> obtenerButacas (String codGrupo, int nroUnidad);
+    ArrayList<Butaca> obtenerButacas (int nroUnidad);
     
     //Permite realizar la reserva de las butacas elegidas
-    Resultado reservarButacas (String codGrupo, int nroUnidad, int[] nroButacasReservadas);
+    boolean reservarButacas (int nroUnidad, int[] nroButacasReservadas);
     
 }
