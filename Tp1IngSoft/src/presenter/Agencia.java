@@ -144,13 +144,26 @@ public class Agencia {
     }
 
     public void seleccionarButaca(int nroButaca) {
-    }
-
-    public void confirmarReserva() {
+        for (Butaca b : this.butacas) {
+            if (b.getNroButaca() == nroButaca && !b.isEstado()) {
+                this.reserva.agregarButaca(b);
+            }
+        }
     }
 
     public void ingresarCliente(String nombre, long dni, String telefono,
             String correo) {
+        this.reserva.ingresarCliente(nombre, dni, telefono, correo);
+    }
+
+    public void confirmarReserva() {
+        int[] nroDeButacas = this.reserva.obtenerButacas();
+        if (this.adaptadorTransporte.reservarButacas(this.salida.getUnidad().
+                getNroUnidad(), nroDeButacas)) {
+            this.salida.agregarReserva(this.reserva);
+        } else {
+            // avisar a la interfaz grafica que no se pudieron reservas las butacas
+        }
     }
 
 }
