@@ -2,6 +2,8 @@ package view;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import model.Paquete;
 import model.Unidad;
@@ -14,15 +16,22 @@ import presenter.Agencia;
 public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
 
     private Agencia presentador;
+    private DefaultComboBoxModel paquetesModel;
+    private HashMap<String, String> paquetes;
+    private DefaultComboBoxModel unidadesModel;
 
     public CrearSalida() {
         initComponents();
+        this.paquetesModel = new DefaultComboBoxModel();
+        this.unidadesModel = new DefaultComboBoxModel();
         this.presentador = new Agencia(this);
+        this.paquetes = new HashMap<>();
+        this.presentador.comenzarNuevaSalida();
         //poner la ventana al centro
         this.setLocationRelativeTo(null);
         //inicializar combobox paquetes y unidades
-        this.cmbPaquetes.setModel(new DefaultComboBoxModel(new String[]{}));
-        this.cmbUnidades.setModel(new DefaultComboBoxModel(new String[]{}));
+        //this.cmbPaquetes.setModel(new DefaultComboBoxModel(new String[]{}));
+        //this.cmbUnidades.setModel(new DefaultComboBoxModel(new String[]{}));
     }
 
     /**
@@ -169,7 +178,8 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbPaquetesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPaquetesItemStateChanged
-
+        this.presentador.seleccionarPaquetes(this.paquetes.get(evt.getItem().toString()));
+        System.out.println(evt.getItem().toString());
     }//GEN-LAST:event_cmbPaquetesItemStateChanged
 
     /**
@@ -210,9 +220,12 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
 
     @Override
     public void cargarPaquetes(ArrayList<Paquete> paquetes) {
+        this.paquetesModel.addElement("---Seleccionar Paquete---");
         for (Paquete p : paquetes) {
-            this.cmbPaquetes.addItem(p.getNombre());
+            this.paquetesModel.addElement(p.getNombre());
+            this.paquetes.put(p.getNombre(), p.getCodPaquete());
         }
+        this.cmbPaquetes.setModel(paquetesModel);
     }
 
     @Override
@@ -222,9 +235,11 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
 
     @Override
     public void cargarUnidades(ArrayList<Unidad> unidades) {
+        this.unidadesModel.removeAllElements();
         for (Unidad u : unidades) {
-            this.cmbUnidades.addItem(String.valueOf(u.getNroUnidad()));
+            this.unidadesModel.addElement(u.getDominio());
         }
+        this.cmbUnidades.setModel(this.unidadesModel);
     }
 
     @Override
