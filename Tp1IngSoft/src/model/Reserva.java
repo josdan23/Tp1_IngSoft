@@ -37,12 +37,12 @@ public class Reserva {
         this.cliente = cliente;
     }
 
-    public void agregarButaca(/*Butaca butaca*/) {
+    public void agregarButaca(Butaca butaca) {
 
     }
 
-    public ArrayList<Butaca> obtenerButacas() {
-        return new ArrayList<>();
+    public int[] obtenerButacas() {
+        return null;
     }
 
     public void agregarSalida(Salida salida) {
