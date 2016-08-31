@@ -7,7 +7,6 @@ package model;
 
 import com.microsoft.schemas._2003._10.serialization.arrays.ArrayOfint;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.datacontract.schemas._2004._07.sge_service_contracts.ArrayOfButacaSvc;

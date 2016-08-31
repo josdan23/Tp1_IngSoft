@@ -11,7 +11,6 @@ package model;
  * @author josdan
  */
 import java.util.ArrayList;
-import org.tempuri.IBusServiceObtenerButacasBusServiceFaultFaultFaultMessage;
 
 public interface IAdaptadorTransporte {
     
