@@ -18,13 +18,14 @@ public class Paquete {
     private Ciudad ciudadOrigen;
     private ArrayList<Salida> salidas;
     private ArrayList<Servicio> servicios;
+    private ArrayList<BasePaquete> listaBasePaquetes;
 
     public Paquete() {
     }
 
     public Paquete(String codPaquete, String nombre, String descripcion,
             String itinerario, String condicionesComerciales,
-            int nroDias, int nroNoches, Ciudad ciudad) {
+            int nroDias, int nroNoches, Ciudad ciudad, ArrayList<BasePaquete> listaBasePaquetes) {
         this.codPaquete = codPaquete;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -35,6 +36,7 @@ public class Paquete {
         this.ciudadOrigen = ciudad;
         this.salidas = new ArrayList<>();
         this.servicios = new ArrayList<>();
+        this.listaBasePaquetes = listaBasePaquetes;
     }
 
     public String getCodPaquete() {
@@ -126,6 +128,14 @@ public class Paquete {
 
     public void setCiudadOrigen(Ciudad ciudadOrigen) {
         this.ciudadOrigen = ciudadOrigen;
+    }
+    
+    public ArrayList<BasePaquete> getListaBasePaquetes() {
+        return listaBasePaquetes;
+    }
+
+    public void setListaBasePaquetes(ArrayList<BasePaquete> listaBasePaquetes) {
+        this.listaBasePaquetes = listaBasePaquetes;
     }
 
 }
