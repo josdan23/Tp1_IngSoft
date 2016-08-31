@@ -11,6 +11,7 @@ package model;
  * @author josdan
  */
 import java.util.ArrayList;
+import org.tempuri.IBusServiceObtenerButacasBusServiceFaultFaultFaultMessage;
 
 public interface IAdaptadorTransporte {
     
@@ -21,12 +22,12 @@ public interface IAdaptadorTransporte {
     ArrayList<Ciudad> obtenerCiudades (String codGrupo);
     
     //Permite vicncular una unidad a la salida
-    Resultado vicularUnidad (String codGrupo, int nroUnidad);
+    Resultado vincularUnidad (String codGrupo, int nroUnidad);
     
     //obteine una lista de todas las butacas asociadas
     ArrayList<Butaca> obtenerButacas (String codGrupo, int nroUnidad);
     
     //Permite realizar la reserva de las butacas elegidas
-    Resultado reservarButaca (String codGrupo, int nroUnidad, int[] nroButacasReservadas);
+    Resultado reservarButacas (String codGrupo, int nroUnidad, int[] nroButacasReservadas);
     
 }
