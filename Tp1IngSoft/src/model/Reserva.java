@@ -49,7 +49,9 @@ public class Reserva {
     }
 
     public void ingresarCliente(String nombre, long dni, String telefono,
-            String direccion) {
+            String correo) {
+        
+        this.setCliente(new Cliente(nombre, dni, telefono, correo));
     }
 
 }

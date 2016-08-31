@@ -15,11 +15,11 @@ public class Butaca extends Servicio {
     public Butaca() {
     }
 
-    public Butaca(int nroButaca, boolean estado, Date FechaDesde, Date FechaHasta) {
+    public Butaca(int nroButaca, boolean estado, Date FechaDesde, Date FechaHasta, Unidad unidad) {
         super(FechaDesde, FechaHasta);
         this.nroButaca = nroButaca;
         this.estado = estado;
-        unidad = new Unidad();
+        this.unidad = unidad;
     }
 
     public int getNroButaca() {

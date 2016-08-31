@@ -9,16 +9,16 @@ public class Cliente {
     private String nombre;
     private long dni;
     private String telefono;
-    private String direccion;
+    private String correo;
 
     public Cliente() {
     }
 
-    public Cliente(String nombre, long dni, String telefono, String direccion) {
+    public Cliente(String nombre, long dni, String telefono, String correo) {
         this.nombre = nombre;
         this.dni = dni;
         this.telefono = telefono;
-        this.direccion = direccion;
+        this.correo = correo;
     }
 
     public String getNombre() {
@@ -45,12 +45,12 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     
