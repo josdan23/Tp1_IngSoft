@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model;
 
 import java.util.ArrayList;
@@ -6,10 +11,10 @@ import java.util.ArrayList;
  *
  * @author josdan
  */
-public class CatalogoDePaquete {
+public class CatalogoDePaquetesJson implements IAdaptadorCatalogoDePaquetes{
 
+    @Override
     public ArrayList<Paquete> obtenerPaquetes() {
-        
         ArrayList<Paquete> listaPaquetes = new ArrayList<Paquete>();
         
         listaPaquetes.add(new Paquete("p1", "paqA", "xxxx", "xxxx", " xxxx", 2, 3, new Ciudad(2,"xxxx")));
@@ -22,4 +27,5 @@ public class CatalogoDePaquete {
         
         return listaPaquetes;
     }
+
 }
