@@ -2,8 +2,10 @@ package view;
 
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import model.Paquete;
 import model.Unidad;
+import presenter.Agencia;
 
 /**
  *
@@ -11,9 +13,16 @@ import model.Unidad;
  */
 public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
 
+    private Agencia presentador;
+
     public CrearSalida() {
         initComponents();
+        this.presentador = new Agencia(this);
+        //poner la ventana al centro
         this.setLocationRelativeTo(null);
+        //inicializar combobox paquetes y unidades
+        this.cmbPaquetes.setModel(new DefaultComboBoxModel(new String[]{}));
+        this.cmbUnidades.setModel(new DefaultComboBoxModel(new String[]{}));
     }
 
     /**
@@ -45,6 +54,12 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
         lblNuevaSalida.setText("Crear Nueva Salida");
 
         jLabel1.setText("PAQUETE");
+
+        cmbPaquetes.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbPaquetesItemStateChanged(evt);
+            }
+        });
 
         jLabel2.setText("UNIDAD");
 
@@ -153,6 +168,10 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cmbPaquetesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPaquetesItemStateChanged
+
+    }//GEN-LAST:event_cmbPaquetesItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -191,7 +210,9 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
 
     @Override
     public void cargarPaquetes(ArrayList<Paquete> paquetes) {
-
+        for (Paquete p : paquetes) {
+            this.cmbPaquetes.addItem(p.getNombre());
+        }
     }
 
     @Override
@@ -201,21 +222,28 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
 
     @Override
     public void cargarUnidades(ArrayList<Unidad> unidades) {
-
+        for (Unidad u : unidades) {
+            this.cmbUnidades.addItem(String.valueOf(u.getNroUnidad()));
+        }
     }
 
     @Override
     public String obtenerUnidadSeleccionado() {
-
+        return this.cmbUnidades.getSelectedItem().toString();
     }
 
     @Override
     public Date obtenerFecha() {
+        int day = this.calendario.getDayChooser().getDay();
+        int month = this.calendario.getMonthChooser().getMonth();
+        int year = this.calendario.getYearChooser().getYear();
 
+        return null;
     }
 
     @Override
     public int obtenerCupos() {
+        return Integer.parseInt(this.txtCupos.getText());
     }
 
 
