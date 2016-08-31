@@ -50,7 +50,7 @@ public class Reserva {
     }
 
     public void agregarButaca(Butaca butaca) {
-        this.setButacas(butaca);
+        
     }
 
     //obtiene el nro de butacas que estan reservadas

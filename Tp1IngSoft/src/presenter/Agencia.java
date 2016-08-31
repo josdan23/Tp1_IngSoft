@@ -3,6 +3,7 @@ package presenter;
 import java.util.ArrayList;
 import java.util.Date;
 import model.AdaptadorTransporte;
+import model.BasePaquete;
 import model.Butaca;
 import model.CatalogoDePaquete;
 import model.Estado;

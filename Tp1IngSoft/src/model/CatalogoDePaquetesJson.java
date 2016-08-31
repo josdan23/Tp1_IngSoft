@@ -15,7 +15,7 @@ public class CatalogoDePaquetesJson implements IAdaptadorCatalogoDePaquetes{
 
     @Override
     public ArrayList<Paquete> obtenerPaquetes() {
-        ArrayList<Paquete> listaPaquetes = new ArrayList<Paquete>();
+       /* ArrayList<Paquete> listaPaquetes = new ArrayList<Paquete>();
         
         listaPaquetes.add(new Paquete("p1", "paqA", "xxxx", "xxxx", " xxxx", 2, 3, new Ciudad(2,"xxxx")));
         listaPaquetes.add(new Paquete("p2", "paqB", "xxxx", "xxxx", " xxxx", 2, 3, new Ciudad(2,"xxxx")));
@@ -26,6 +26,8 @@ public class CatalogoDePaquetesJson implements IAdaptadorCatalogoDePaquetes{
         listaPaquetes.add(new Paquete("p7", "paqJ", "xxxx", "xxxx", " xxxx", 2, 3, new Ciudad(2,"xxxx")));
         
         return listaPaquetes;
+*/
+       return null;
     }
 
 }
