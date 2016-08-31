@@ -12,15 +12,15 @@ package model;
  */
 public interface IAdaptadorTransporte {
     
-    public void obtenerUnidad (String codGrupo, int codCiudad);
+    public Unidad[] obtenerUnidad (String codGrupo, int codCiudad);
     
-    public void obtenerCiudad (String codGrupo);
+    public Ciudad[] obtenerCiudad (String codGrupo);
     
-    public void vicularUnidad (String codGrupo, int nroUnidad);
+    public Resultado vicularUnidad (String codGrupo, int nroUnidad);
     
-    public void obtenerButacas (String codGrupo, int nroUnidad);
+    public Butacas obtenerButacas (String codGrupo, int nroUnidad);
     
-    public void reservarButaca (String codGrupo, int nroUnidad, int[] nroButacasReservadas);
+    public Resultado reservarButaca (String codGrupo, int nroUnidad, int[] nroButacasReservadas);
             
     
 }
