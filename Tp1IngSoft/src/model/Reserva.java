@@ -42,6 +42,9 @@ public class Reserva {
     }
 
     public int[] obtenerButacas() {
+        int butacas[] = new int[this.getCantPasajeros()];
+        
+        for( Butaca b : )
         return null;
     }
 
