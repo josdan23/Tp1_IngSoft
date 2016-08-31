@@ -16,17 +16,23 @@ import model.Unidad;
 public class Agencia {
 
     private ArrayList<Paquete> paquetes;
+    /*Esta coleccion hace referencia a las salidas en venta obtenidas durante
+      el caso de uso Crear Reserva
+     */
     private ArrayList<Salida> salidas;
     private ArrayList<Unidad> unidades;
     /*este atributo sirve para mantener una referncia a la salida creada
-      durante el caso de uso Crear Salida
+      durante los 2 casos de uso
      */
     private Salida salida;
-    /*este atributo sirve para mantener una referncia al paquete extraido de la
-      coleccion de paquetes durante el caso de uso Crear Salida
+    /*usado en los dos casos de uso para referenciar al paquete que se extrae
+      de la coleccion de paquetes
      */
     private Paquete paquete;
     private CatalogoDePaquete catalogoPaquetes;
+    /*este atributo sirve para mantener una referncia a la reserva creada durante
+      el caso de uso Crear Reserva
+     */
     private Reserva reserva;
     private AdaptadorTransporte adaptadorTransporte;
 
@@ -85,6 +91,22 @@ public class Agencia {
     }
 
     public void crearReserva() {
+        this.reserva = new Reserva();
+        this.paquetes = catalogoPaquetes.obtenerPaquetes();
+    }
+
+    public void seleccionarPaquetesReserva(String codPaquete) {
+        for (Paquete p : this.paquetes) {
+            if (p.getCodPaquete().equals(codPaquete)) {
+                this.paquete = p;
+                break;
+            }
+        }
+        if (this.paquete != null) {
+            this.salidas = this.paquete.obtenerSalidasEnVenta();
+        } else {
+            //avisar a la interfaz grafica que no se encontro el paquete
+        }
     }
 
     public void seleccionarSalida(String codSalida) {
