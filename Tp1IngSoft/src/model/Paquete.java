@@ -15,13 +15,16 @@ public class Paquete {
     private String condicionesComerciales;
     private int nroDias;
     private int nroNoches;
+    private Ciudad ciudadOrigen;
     private ArrayList<Salida> salidas;
     private ArrayList<Servicio> servicios;
 
     public Paquete() {
     }
 
-    public Paquete(String codPaquete, String nombre, String descripcion, String itinerario, String condicionesComerciales, int nroDias, int nroNoches) {
+    public Paquete(String codPaquete, String nombre, String descripcion,
+            String itinerario, String condicionesComerciales,
+            int nroDias, int nroNoches, Ciudad ciudad) {
         this.codPaquete = codPaquete;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -29,6 +32,7 @@ public class Paquete {
         this.condicionesComerciales = condicionesComerciales;
         this.nroDias = nroDias;
         this.nroNoches = nroNoches;
+        this.ciudadOrigen = ciudad;
         this.salidas = new ArrayList<>();
         this.servicios = new ArrayList<>();
     }
@@ -115,4 +119,13 @@ public class Paquete {
     public ArrayList<Salida> obtenerSalidasEnVenta() {
         return new ArrayList<>();
     }
+
+    public Ciudad getCiudadOrigen() {
+        return ciudadOrigen;
+    }
+
+    public void setCiudadOrigen(Ciudad ciudadOrigen) {
+        this.ciudadOrigen = ciudadOrigen;
+    }
+
 }
