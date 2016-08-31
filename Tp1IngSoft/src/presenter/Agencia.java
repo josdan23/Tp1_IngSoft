@@ -3,6 +3,7 @@ package presenter;
 import java.util.ArrayList;
 import java.util.Date;
 import model.AdaptadorTransporte;
+import model.Butaca;
 import model.CatalogoDePaquete;
 import model.Paquete;
 import model.Reserva;
@@ -20,6 +21,7 @@ public class Agencia {
       el caso de uso Crear Reserva
      */
     private ArrayList<Salida> salidas;
+    private ArrayList<Butaca> butacas;
     private ArrayList<Unidad> unidades;
     /*este atributo sirve para mantener una referncia a la salida creada
       durante los 2 casos de uso
@@ -40,6 +42,7 @@ public class Agencia {
         this.paquetes = new ArrayList<>();
         this.salidas = new ArrayList<>();
         this.unidades = new ArrayList<>();
+        this.butacas = new ArrayList<>();
         this.catalogoPaquetes = new CatalogoDePaquete();
         this.adaptadorTransporte = new AdaptadorTransporte();
     }
@@ -110,9 +113,34 @@ public class Agencia {
     }
 
     public void seleccionarSalida(String codSalida) {
+        for (Salida s : this.salidas) {
+            if (s.getCodSalida().equals(codSalida)) {
+                this.salida = s;
+                break;
+            }
+        }
+        if (this.salida != null) {
+            this.reserva.agregarSalida(this.salida);
+            this.butacas = this.adaptadorTransporte.obtenerButacas(this.salida.
+                    getUnidad().getNroUnidad());
+        } else {
+            //avisar a la interfaz grafica que no se encontro la salida
+        }
     }
 
     public void ingresarCantPasajeros(int cantPasajeros) {
+        ArrayList<Butaca> butacasDisp = new ArrayList<>();
+        for (Butaca b : butacas) {
+            //si el estado de la butaca es true esta ocupado
+            if (!b.isEstado()) {
+                butacasDisp.add(b);
+            }
+        }
+        if (butacasDisp.size() >= cantPasajeros) {
+            this.reserva.setCantPasajeros(cantPasajeros);
+        }
+
+        //ATENCION! FALTA CALCULAR EL TOTAL DE LA RESERVA
     }
 
     public void seleccionarButaca(int nroButaca) {
