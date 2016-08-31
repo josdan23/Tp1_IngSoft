@@ -1,7 +1,13 @@
-package model;
+package presenter;
 
 import java.util.ArrayList;
 import java.util.Date;
+import model.AdaptadorTransporte;
+import model.CatalogoDePaquete;
+import model.Paquete;
+import model.Reserva;
+import model.Salida;
+import model.Unidad;
 
 /**
  *
