@@ -58,6 +58,7 @@ public class Agencia {
         this.catalogoPaquetes = new CatalogoDePaquete();
         this.adaptadorTransporte = new AdaptadorTransporte();
         this.vistaCrearSalida = vista;
+        //mi rama de desarrollo
     }
 
     public void comenzarNuevaSalida() {
