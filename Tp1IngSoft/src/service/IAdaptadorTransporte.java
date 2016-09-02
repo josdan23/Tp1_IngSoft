@@ -1,4 +1,4 @@
-package model;
+package service;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,6 +11,9 @@ package model;
  * @author josdan
  */
 import java.util.ArrayList;
+import model.Butaca;
+import model.Ciudad;
+import model.Unidad;
 
 public interface IAdaptadorTransporte {
     
