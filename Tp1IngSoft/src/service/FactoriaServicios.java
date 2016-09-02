@@ -20,10 +20,6 @@ public class FactoriaServicios {
         return instancia;
     }
 
-    public void setInstancia(FactoriaServicios instancia) {
-        this.instancia = instancia;
-    }
-
     public IAdaptadorTransporte getAdaptadorTransporte() {
         return new AdaptadorTransporte();
     }
