@@ -2,7 +2,7 @@ package presenter;
 
 import java.util.ArrayList;
 import java.util.Date;
-import model.AdaptadorTransporte;
+import service.AdaptadorTransporte;
 import model.BasePaquete;
 import model.Butaca;
 import model.CatalogoDePaquete;
@@ -11,7 +11,7 @@ import model.Paquete;
 import model.Reserva;
 import model.Salida;
 import model.Unidad;
-import view.ICrearSalida;
+import service.FactoriaServicios;
 
 /**
  *
@@ -40,12 +40,11 @@ public class Agencia {
       el caso de uso Crear Reserva
      */
     private Reserva reserva;
-    private AdaptadorTransporte adaptadorTransporte;
-    
+
     /*
         Este atributo sirve para obtener el precio del paquete y agregarlo
         a la reserva.
-    */
+     */
     private ArrayList<BasePaquete> listaDeBasePaquetes;
     private BasePaquete basePaquete;
     private float total;
@@ -56,7 +55,6 @@ public class Agencia {
         this.unidades = new ArrayList<>();
         this.butacas = new ArrayList<>();
         this.catalogoPaquetes = new CatalogoDePaquete();
-        this.adaptadorTransporte = new AdaptadorTransporte();
         this.vistaCrearSalida = vista;
     }
 
@@ -74,8 +72,12 @@ public class Agencia {
         }
         if (this.paquete != null) {
             this.salida = paquete.crearSalida();
-            this.unidades = this.adaptadorTransporte.obtenerUnidades(paquete.
-                    getCiudadOrigen().getCodigo());
+            this.unidades = FactoriaServicios.
+                    getInstancia().
+                    getAdaptadorTransporte().
+                    obtenerUnidades(paquete.
+                            getCiudadOrigen().
+                            getCodigo());
             this.vistaCrearSalida.cargarUnidades(this.unidades);
         } else {
             //avisar a la interfaz grafica que no se encontro el paquete
@@ -100,8 +102,11 @@ public class Agencia {
     }
 
     public void confirmarSalida() {
-        if (this.adaptadorTransporte.vincularUnidad(this.salida.getUnidad().
-                getNroUnidad())) {
+        if (FactoriaServicios.
+                getInstancia().
+                getAdaptadorTransporte().
+                vincularUnidad(this.salida.getUnidad().
+                        getNroUnidad())) {
             this.salida.setEstado(Estado.EnVenta);
             this.paquete.agregarSalida(salida);
             this.vistaCrearSalida.mostrarAlerta("SALIDA CONFIRMADA!", "INFO");
@@ -139,8 +144,11 @@ public class Agencia {
         }
         if (this.salida != null) {
             this.reserva.agregarSalida(this.salida);
-            this.butacas = this.adaptadorTransporte.obtenerButacas(this.salida.
-                    getUnidad().getNroUnidad());
+            this.butacas = FactoriaServicios.
+                    getInstancia().
+                    getAdaptadorTransporte().
+                    obtenerButacas(this.salida.
+                            getUnidad().getNroUnidad());
         } else {
             //avisar a la interfaz grafica que no se encontro la salida
         }
@@ -159,11 +167,10 @@ public class Agencia {
         }
 
         //ATENCION! FALTA CALCULAR EL TOTAL DE LA RESERVA
-        
         this.basePaquete = this.paquete.getListaBasePaquetes().get(cantPasajeros - 1);
-        
+
         this.total = this.basePaquete.getPrecio();
-        
+
         this.reserva.setTotal(total);
     }
 
@@ -182,8 +189,11 @@ public class Agencia {
 
     public void confirmarReserva() {
         int[] nroDeButacas = this.reserva.obtenerButacas();
-        if (this.adaptadorTransporte.reservarButacas(this.salida.getUnidad().
-                getNroUnidad(), nroDeButacas)) {
+        if (FactoriaServicios.
+                getInstancia().
+                getAdaptadorTransporte().
+                reservarButacas(this.salida.getUnidad().
+                        getNroUnidad(), nroDeButacas)) {
             this.salida.agregarReserva(this.reserva);
         } else {
             // avisar a la interfaz grafica que no se pudieron reservas las butacas
