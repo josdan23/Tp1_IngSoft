@@ -119,7 +119,13 @@ public class Paquete {
     }
 
     public ArrayList<Salida> obtenerSalidasEnVenta() {
-        return new ArrayList<>();
+        ArrayList<Salida> salidasEnVenta = new ArrayList<>();
+        for (Salida salida : this.salidas) {
+            if (salida.getEstado() == Estado.EnVenta) {
+                salidasEnVenta.add(salida);
+            }
+        }
+        return salidasEnVenta;
     }
 
     public Ciudad getCiudadOrigen() {
@@ -129,7 +135,7 @@ public class Paquete {
     public void setCiudadOrigen(Ciudad ciudadOrigen) {
         this.ciudadOrigen = ciudadOrigen;
     }
-    
+
     public ArrayList<BasePaquete> getListaBasePaquetes() {
         return listaBasePaquetes;
     }
