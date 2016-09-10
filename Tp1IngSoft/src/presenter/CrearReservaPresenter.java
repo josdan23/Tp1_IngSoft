@@ -28,10 +28,21 @@ public class CrearReservaPresenter {
     private ArrayList<Salida> salidas;
     private ArrayList<Butaca> butacas;
     private CatalogoDePaquete catalogoPaquetes;
+    private ICrearReserva vista;
+
+    public CrearReservaPresenter(ICrearReserva vista) {
+        this.paquetes = new ArrayList<>();
+        this.salidas = new ArrayList<>();
+        this.butacas = new ArrayList<>();
+        this.catalogoPaquetes = new CatalogoDePaquete();
+        this.vista = vista;
+    }
 
     public void crearReserva() {
         this.reserva = new Reserva();
         this.paquetes = catalogoPaquetes.obtenerPaquetes();
+        this.vista.cargarPaquetes(paquetes);
+
     }
 
     public void seleccionarPaquetesReserva(String codPaquete) {
@@ -43,6 +54,7 @@ public class CrearReservaPresenter {
         }
         if (this.paquete != null) {
             this.salidas = this.paquete.obtenerSalidasEnVenta();
+            this.vista.cargarSalidas(salidas);
         } else {
             //avisar a la interfaz grafica que no se encontro el paquete
         }
@@ -62,7 +74,9 @@ public class CrearReservaPresenter {
                     getAdaptadorTransporte().
                     obtenerButacas(this.salida.
                             getUnidad().getNroUnidad());
+            this.vista.cargarButacas(this.butacas);
         } else {
+            System.out.println("Salida null...");
             //avisar a la interfaz grafica que no se encontro la salida
         }
     }
