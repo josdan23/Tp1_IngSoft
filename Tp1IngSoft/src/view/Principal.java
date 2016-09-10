@@ -41,6 +41,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btnNuevaReserva.setText("NUEVA RESERVA");
+        btnNuevaReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevaReservaActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("SALIR");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +102,10 @@ public class Principal extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnNuevaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaReservaActionPerformed
+        new CrearReserva().setVisible(true);
+    }//GEN-LAST:event_btnNuevaReservaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
