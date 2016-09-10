@@ -5,6 +5,7 @@
  */
 package model;
 
+import service.IAdaptadorCatalogoDePaquetes;
 import java.util.ArrayList;
 
 /**
