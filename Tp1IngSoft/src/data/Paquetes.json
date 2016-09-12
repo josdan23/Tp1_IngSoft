@@ -1,0 +1,115 @@
+[{
+        "codPaquete": "p1",
+        "nombre": "paqA",
+        "descripcion": "xxx",
+        "itinerario": "xxx",
+        "condicionesComerciales": "xxx",
+        "nroDias": "2",
+        "nroNoches": "3",
+        "ciudadOrigen": {
+            "codigo": "1",
+            "descripcion": "xxx"
+        },
+        "listaBasePaquetes": [{
+                "descripcion": "Simple",
+                "precio": "1500"
+            }, {
+                "descripcion": "Doble",
+                "precio": "1000"
+            }, {
+                "descripcion": "Triple",
+                "precio": "900"
+            }, {
+                "descripcion": "Cuadruple",
+                "precio": "700"
+            }, {
+                "descripcion": "Quintuple",
+                "precio": "500"
+            }]
+    },
+    {
+        "codPaquete": "p2",
+        "nombre": "paqB",
+        "descripcion": "xxx",
+        "itinerario": "xxx",
+        "condicionesComerciales": "xxx",
+        "nroDias": "2",
+        "nroNoches": "3",
+        "ciudadOrigen": {
+            "codigo": "2",
+            "descripcion": "xxx"
+        },
+        "listaBasePaquetes": [{
+                "descripcion": "Simple",
+                "precio": "1500"
+            }, {
+                "descripcion": "Doble",
+                "precio": "1000"
+            }, {
+                "descripcion": "Triple",
+                "precio": "900"
+            }, {
+                "descripcion": "Cuadruple",
+                "precio": "700"
+            }, {
+                "descripcion": "Quintuple",
+                "precio": "500"
+            }]
+    }, {
+        "codPaquete": "p3",
+        "nombre": "paqC",
+        "descripcion": "xxx",
+        "itinerario": "xxx",
+        "condicionesComerciales": "xxx",
+        "nroDias": "2",
+        "nroNoches": "3",
+        "ciudadOrigen": {
+            "codigo": "3",
+            "descripcion": "xxx"
+        },
+        "listaBasePaquetes": [{
+                "descripcion": "Simple",
+                "precio": "1500"
+            }, {
+                "descripcion": "Doble",
+                "precio": "1000"
+            }, {
+                "descripcion": "Triple",
+                "precio": "900"
+            }, {
+                "descripcion": "Cuadruple",
+                "precio": "700"
+            }, {
+                "descripcion": "Quintuple",
+                "precio": "500"
+            }]
+    }, {
+        "codPaquete": "p4",
+        "nombre": "paqD",
+        "descripcion": "xxx",
+        "itinerario": "xxx",
+        "condicionesComerciales": "xxx",
+        "nroDias": "2",
+        "nroNoches": "3",
+        "ciudadOrigen": {
+            "codigo": "4",
+            "descripcion": "xxx"
+        },
+        "listaBasePaquetes": [{
+                "descripcion": "Simple",
+                "precio": "1500"
+            }, {
+                "descripcion": "Doble",
+                "precio": "1000"
+            }, {
+                "descripcion": "Triple",
+                "precio": "900"
+            }, {
+                "descripcion": "Cuadruple",
+                "precio": "700"
+            }, {
+                "descripcion": "Quintuple",
+                "precio": "500"
+            }]
+    }]
+
