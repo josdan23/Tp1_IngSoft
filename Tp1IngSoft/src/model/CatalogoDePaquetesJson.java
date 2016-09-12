@@ -1,34 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import service.IAdaptadorCatalogoDePaquetes;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author josdan
  */
-public class CatalogoDePaquetesJson implements IAdaptadorCatalogoDePaquetes{
+public class CatalogoDePaquetesJson implements IAdaptadorCatalogoDePaquetes {
 
     @Override
     public ArrayList<Paquete> obtenerPaquetes() {
-       /* ArrayList<Paquete> listaPaquetes = new ArrayList<Paquete>();
-        
-        listaPaquetes.add(new Paquete("p1", "paqA", "xxxx", "xxxx", " xxxx", 2, 3, new Ciudad(2,"xxxx")));
-        listaPaquetes.add(new Paquete("p2", "paqB", "xxxx", "xxxx", " xxxx", 2, 3, new Ciudad(2,"xxxx")));
-        listaPaquetes.add(new Paquete("p3", "paqC", "xxxx", "xxxx", " xxxx", 2, 3, new Ciudad(2,"xxxx")));
-        listaPaquetes.add(new Paquete("p4", "paqD", "xxxx", "xxxx", " xxxx", 2, 3, new Ciudad(2,"xxxx")));
-        listaPaquetes.add(new Paquete("p5", "paqE", "xxxx", "xxxx", " xxxx", 2, 3, new Ciudad(2,"xxxx")));
-        listaPaquetes.add(new Paquete("p6", "paqF", "xxxx", "xxxx", " xxxx", 2, 3, new Ciudad(2,"xxxx")));
-        listaPaquetes.add(new Paquete("p7", "paqJ", "xxxx", "xxxx", " xxxx", 2, 3, new Ciudad(2,"xxxx")));
-        
-        return listaPaquetes;
-*/
-       return null;
+        Gson gson = new Gson();
+        try {
+            FileReader reader = new FileReader("src/data/Paquetes.json");
+            BufferedReader buffer = new BufferedReader(reader);
+            String jsonString = "";
+            String aux = "";
+            while ((aux = buffer.readLine()) != null) {
+                jsonString += aux;
+            }
+            Type listadoPaquetes = new TypeToken<ArrayList<Paquete>>() {
+            }.getType();
+            return gson.fromJson(jsonString, listadoPaquetes);
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
     }
 
 }
