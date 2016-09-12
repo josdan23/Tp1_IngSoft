@@ -577,14 +577,13 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
         this.salidasModel.removeAllElements();
         this.salidasModel.addElement("---Seleccionar Salida---");
         for (Salida salida : salidas) {
-            this.salidasModel.addElement(
-                    String.valueOf(salida.getFecha().getDay())
+            String fecha = String.valueOf(salida.getFecha().getDay())
                     + "/"
                     + String.valueOf(salida.getFecha().getMonth())
                     + "/"
-                    + String.valueOf(salida.getFecha().getYear() + 1900)
-            );
-            this.salidas.put(salida.getFecha().toString(), salida.getCodSalida());
+                    + String.valueOf(salida.getFecha().getYear() + 1900);
+            this.salidasModel.addElement(fecha);
+            this.salidas.put(fecha, salida.getCodSalida());
         }
         this.cmbSalidas.setModel(salidasModel);
     }
