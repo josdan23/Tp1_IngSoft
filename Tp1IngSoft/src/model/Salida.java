@@ -19,7 +19,8 @@ public class Salida {
     public Salida() {
     }
 
-    public Salida(Date fecha, int cupo, Estado estado, Unidad unidad) {
+    public Salida(String codSalida, Date fecha, int cupo, Estado estado, Unidad unidad) {
+        this.codSalida = codSalida;
         this.fecha = fecha;
         this.cupo = cupo;
         this.estado = estado;
