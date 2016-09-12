@@ -6,6 +6,7 @@ import service.AdaptadorTransporte;
 import model.BasePaquete;
 import model.Butaca;
 import model.CatalogoDePaquete;
+import model.CatalogoDePaquetesJson;
 import model.Estado;
 import model.Paquete;
 import model.Reserva;
@@ -35,7 +36,7 @@ public class Agencia {
       de la coleccion de paquetes
      */
     private Paquete paquete;
-    private CatalogoDePaquete catalogoPaquetes;
+    private CatalogoDePaquetesJson catalogoPaquetes;
     /*
         Este atributo sirve para obtener el precio del paquete y agregarlo
         a la reserva.
@@ -49,7 +50,7 @@ public class Agencia {
         this.salidas = new ArrayList<>();
         this.unidades = new ArrayList<>();
         this.butacas = new ArrayList<>();
-        this.catalogoPaquetes = new CatalogoDePaquete();
+        this.catalogoPaquetes = new CatalogoDePaquetesJson();
         this.vistaCrearSalida = vista;
     }
 
@@ -110,9 +111,6 @@ public class Agencia {
             this.vistaCrearSalida.mostrarAlerta("NO SE PUDO VINCULAR LA UNIDAD", "ERROR");
         }
     }
-
-
-
 
     //COMENTARIO AGREGADO POR DANIEL
 }
