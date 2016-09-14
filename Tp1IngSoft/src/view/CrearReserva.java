@@ -6,6 +6,7 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
@@ -20,7 +21,7 @@ import presenter.ICrearReserva;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
-
+    
     private CrearReservaPresenter presentador;
     private DefaultComboBoxModel paquetesModel;
     private HashMap<String, String> paquetes;
@@ -556,7 +557,7 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
             }
         });
     }
-
+    
     @Override
     public void cargarPaquetes(ArrayList<Paquete> paquetes) {
         this.paquetesModel.addElement("---Seleccionar Paquete---");
@@ -566,33 +567,33 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
         }
         this.cmbPaquetes.setModel(paquetesModel);
     }
-
+    
     @Override
     public String obtenerPaqueteSeleccionado() {
         return this.paquetes.get(this.cmbPaquetes.getSelectedItem().toString());
     }
-
+    
     @Override
     public void cargarSalidas(ArrayList<Salida> salidas) {
         this.salidasModel.removeAllElements();
         this.salidasModel.addElement("---Seleccionar Salida---");
         for (Salida salida : salidas) {
-            String fecha = String.valueOf(salida.getFecha().getDay())
+            String fecha = String.valueOf(salida.getFecha().get(Calendar.DATE))
                     + "/"
-                    + String.valueOf(salida.getFecha().getMonth())
+                    + String.valueOf(salida.getFecha().get(Calendar.MONTH))
                     + "/"
-                    + String.valueOf(salida.getFecha().getYear() + 1900);
+                    + String.valueOf(salida.getFecha().get(Calendar.YEAR));
             this.salidasModel.addElement(fecha);
             this.salidas.put(fecha, salida.getCodSalida());
         }
         this.cmbSalidas.setModel(salidasModel);
     }
-
+    
     @Override
     public String obtenerSalidaSeleccionada() {
         return this.salidas.get(this.cmbSalidas.getSelectedItem().toString());
     }
-
+    
     @Override
     public void cargarButacas(ArrayList<Butaca> butacas) {
         for (Butaca butaca : butacas) {
@@ -776,22 +777,22 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
             }
         }
     }
-
+    
     @Override
     public String obtenerNombre() {
         return this.txtNombreCliente.getText();
     }
-
+    
     @Override
     public long obtenerDni() {
         return Long.parseLong(this.txtDniCliente.getText());
     }
-
+    
     @Override
     public String obtenerTelefono() {
         return this.txtTelefonoCliente.getText();
     }
-
+    
     @Override
     public String obtenerCorreo() {
         return this.txtCorreoCliente.getText();
