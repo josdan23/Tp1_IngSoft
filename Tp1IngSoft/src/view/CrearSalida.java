@@ -2,7 +2,8 @@ package view;
 
 import presenter.ICrearSalida;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
@@ -16,13 +17,13 @@ import presenter.Agencia;
  * @author josdan
  */
 public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
-    
+
     private Agencia presentador;
     private DefaultComboBoxModel paquetesModel;
     private HashMap<String, String> paquetes;
     private DefaultComboBoxModel unidadesModel;
     private HashMap<String, Integer> unidades;
-    
+
     public CrearSalida() {
         initComponents();
         this.setTitle("CREAR SALIDA");
@@ -213,7 +214,7 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
                     "MENSAJE", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
-    
+
     @Override
     public void cargarPaquetes(ArrayList<Paquete> paquetes) {
         this.paquetesModel.addElement("---Seleccionar Paquete---");
@@ -223,12 +224,12 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
         }
         this.cmbPaquetes.setModel(paquetesModel);
     }
-    
+
     @Override
     public String obtenerPaqueteSeleccionado() {
         return this.cmbPaquetes.getSelectedItem().toString();
     }
-    
+
     @Override
     public void cargarUnidades(ArrayList<Unidad> unidades) {
         this.unidadesModel.removeAllElements();
@@ -240,26 +241,26 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
         }
         this.cmbUnidades.setModel(this.unidadesModel);
     }
-    
+
     @Override
     public String obtenerUnidadSeleccionado() {
         return this.cmbUnidades.getSelectedItem().toString();
     }
-    
+
     @Override
-    public Date obtenerFecha() {
+    public Calendar obtenerFecha() {
         int day = this.calendario.getDayChooser().getDay();
-        int month = this.calendario.getMonthChooser().getMonth();
+        int month = this.calendario.getMonthChooser().getMonth() + 1;
         int year = this.calendario.getYearChooser().getYear();
-        
-        return new Date(day, month, year);
+
+        return new GregorianCalendar(year, month, day);
     }
-    
+
     @Override
     public int obtenerCupos() {
         return Integer.parseInt(this.txtCupos.getText());
     }
-    
+
     @Override
     public void mostrarAlerta(String msj, String tipo) {
         if (tipo.equals("ADVERTENCIA")) {
@@ -272,7 +273,7 @@ public class CrearSalida extends javax.swing.JFrame implements ICrearSalida {
             JOptionPane.showMessageDialog(this, msj, "INFO", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
+
     public boolean validarCampos() {
         if (!this.cmbPaquetes.getSelectedItem().toString().equals("---Seleccionar Paquete---")
                 && !this.cmbUnidades.getSelectedItem().toString().equals("---Seleccionar Unidad---")
