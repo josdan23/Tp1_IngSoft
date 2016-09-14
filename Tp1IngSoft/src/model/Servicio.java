@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -8,33 +8,31 @@ import java.util.Date;
  */
 public class Servicio {
 
-    private Date FechaDesde;
-    private Date FechaHasta;
+    private Calendar FechaDesde;
+    private Calendar FechaHasta;
 
     public Servicio() {
     }
 
-    public Servicio(Date FechaDesde, Date FechaHasta) {
+    public Servicio(Calendar FechaDesde, Calendar FechaHasta) {
         this.FechaDesde = FechaDesde;
         this.FechaHasta = FechaHasta;
     }
 
-    public Date getFechaDesde() {
+    public Calendar getFechaDesde() {
         return FechaDesde;
     }
 
-    public void setFechaDesde(Date FechaDesde) {
+    public void setFechaDesde(Calendar FechaDesde) {
         this.FechaDesde = FechaDesde;
     }
 
-    public Date getFechaHasta() {
+    public Calendar getFechaHasta() {
         return FechaHasta;
     }
 
-    public void setFechaHasta(Date FechaHasta) {
+    public void setFechaHasta(Calendar FechaHasta) {
         this.FechaHasta = FechaHasta;
     }
-    
-    
 
 }
