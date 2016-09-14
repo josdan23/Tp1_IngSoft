@@ -1,115 +1,212 @@
-[{
-        "codPaquete": "p1",
-        "nombre": "paqA",
-        "descripcion": "xxx",
-        "itinerario": "xxx",
-        "condicionesComerciales": "xxx",
-        "nroDias": "2",
-        "nroNoches": "3",
-        "ciudadOrigen": {
-            "codigo": "1",
-            "descripcion": "xxx"
-        },
-        "listaBasePaquetes": [{
-                "descripcion": "Simple",
-                "precio": "1500"
-            }, {
-                "descripcion": "Doble",
-                "precio": "1000"
-            }, {
-                "descripcion": "Triple",
-                "precio": "900"
-            }, {
-                "descripcion": "Cuadruple",
-                "precio": "700"
-            }, {
-                "descripcion": "Quintuple",
-                "precio": "500"
-            }]
+[
+  {
+    "codPaquete": "p1",
+    "nombre": "paqA",
+    "descripcion": "xxx",
+    "itinerario": "xxx",
+    "condicionesComerciales": "xxx",
+    "nroDias": 2,
+    "nroNoches": 3,
+    "ciudadOrigen": {
+      "codigo": 1,
+      "descripcion": "xxx"
     },
-    {
-        "codPaquete": "p2",
-        "nombre": "paqB",
-        "descripcion": "xxx",
-        "itinerario": "xxx",
-        "condicionesComerciales": "xxx",
-        "nroDias": "2",
-        "nroNoches": "3",
-        "ciudadOrigen": {
-            "codigo": "2",
-            "descripcion": "xxx"
+    "salidas": [
+      {
+        "codSalida": "1482016",
+        "fecha": {
+          "year": 2016,
+          "month": 8,
+          "dayOfMonth": 14,
+          "hourOfDay": 0,
+          "minute": 0,
+          "second": 0
         },
-        "listaBasePaquetes": [{
-                "descripcion": "Simple",
-                "precio": "1500"
-            }, {
-                "descripcion": "Doble",
-                "precio": "1000"
-            }, {
-                "descripcion": "Triple",
-                "precio": "900"
-            }, {
-                "descripcion": "Cuadruple",
-                "precio": "700"
-            }, {
-                "descripcion": "Quintuple",
-                "precio": "500"
-            }]
-    }, {
-        "codPaquete": "p3",
-        "nombre": "paqC",
-        "descripcion": "xxx",
-        "itinerario": "xxx",
-        "condicionesComerciales": "xxx",
-        "nroDias": "2",
-        "nroNoches": "3",
-        "ciudadOrigen": {
-            "codigo": "3",
-            "descripcion": "xxx"
+        "cupo": 12,
+        "estado": "EnVenta",
+        "unidad": {
+          "nroUnidad": 32,
+          "cantAsientos": 44,
+          "dominio": "AAA032",
+          "marca": "Mercedes",
+          "tipo": "Semicama"
+        }
+      },
+      {
+        "codSalida": "2392016",
+        "fecha": {
+          "year": 2016,
+          "month": 9,
+          "dayOfMonth": 23,
+          "hourOfDay": 0,
+          "minute": 0,
+          "second": 0
         },
-        "listaBasePaquetes": [{
-                "descripcion": "Simple",
-                "precio": "1500"
-            }, {
-                "descripcion": "Doble",
-                "precio": "1000"
-            }, {
-                "descripcion": "Triple",
-                "precio": "900"
-            }, {
-                "descripcion": "Cuadruple",
-                "precio": "700"
-            }, {
-                "descripcion": "Quintuple",
-                "precio": "500"
-            }]
-    }, {
-        "codPaquete": "p4",
-        "nombre": "paqD",
-        "descripcion": "xxx",
-        "itinerario": "xxx",
-        "condicionesComerciales": "xxx",
-        "nroDias": "2",
-        "nroNoches": "3",
-        "ciudadOrigen": {
-            "codigo": "4",
-            "descripcion": "xxx"
+        "cupo": 21,
+        "estado": "EnVenta",
+        "unidad": {
+          "nroUnidad": 1,
+          "cantAsientos": 40,
+          "dominio": "AAA001",
+          "marca": "Mercedes",
+          "tipo": "Cama"
+        }
+      }
+    ],
+    "servicios": [],
+    "listaBasePaquetes": [
+      {
+        "descripcion": "Simple",
+        "precio": 1500.0
+      },
+      {
+        "descripcion": "Doble",
+        "precio": 1000.0
+      },
+      {
+        "descripcion": "Triple",
+        "precio": 900.0
+      },
+      {
+        "descripcion": "Cuadruple",
+        "precio": 700.0
+      },
+      {
+        "descripcion": "Quintuple",
+        "precio": 500.0
+      }
+    ]
+  },
+  {
+    "codPaquete": "p2",
+    "nombre": "paqB",
+    "descripcion": "xxx",
+    "itinerario": "xxx",
+    "condicionesComerciales": "xxx",
+    "nroDias": 2,
+    "nroNoches": 3,
+    "ciudadOrigen": {
+      "codigo": 2,
+      "descripcion": "xxx"
+    },
+    "salidas": [],
+    "servicios": [],
+    "listaBasePaquetes": [
+      {
+        "descripcion": "Simple",
+        "precio": 1500.0
+      },
+      {
+        "descripcion": "Doble",
+        "precio": 1000.0
+      },
+      {
+        "descripcion": "Triple",
+        "precio": 900.0
+      },
+      {
+        "descripcion": "Cuadruple",
+        "precio": 700.0
+      },
+      {
+        "descripcion": "Quintuple",
+        "precio": 500.0
+      }
+    ]
+  },
+  {
+    "codPaquete": "p3",
+    "nombre": "paqC",
+    "descripcion": "xxx",
+    "itinerario": "xxx",
+    "condicionesComerciales": "xxx",
+    "nroDias": 2,
+    "nroNoches": 3,
+    "ciudadOrigen": {
+      "codigo": 3,
+      "descripcion": "xxx"
+    },
+    "salidas": [],
+    "servicios": [],
+    "listaBasePaquetes": [
+      {
+        "descripcion": "Simple",
+        "precio": 1500.0
+      },
+      {
+        "descripcion": "Doble",
+        "precio": 1000.0
+      },
+      {
+        "descripcion": "Triple",
+        "precio": 900.0
+      },
+      {
+        "descripcion": "Cuadruple",
+        "precio": 700.0
+      },
+      {
+        "descripcion": "Quintuple",
+        "precio": 500.0
+      }
+    ]
+  },
+  {
+    "codPaquete": "p4",
+    "nombre": "paqD",
+    "descripcion": "xxx",
+    "itinerario": "xxx",
+    "condicionesComerciales": "xxx",
+    "nroDias": 2,
+    "nroNoches": 3,
+    "ciudadOrigen": {
+      "codigo": 4,
+      "descripcion": "xxx"
+    },
+    "salidas": [
+      {
+        "codSalida": "3092016",
+        "fecha": {
+          "year": 2016,
+          "month": 9,
+          "dayOfMonth": 30,
+          "hourOfDay": 0,
+          "minute": 0,
+          "second": 0
         },
-        "listaBasePaquetes": [{
-                "descripcion": "Simple",
-                "precio": "1500"
-            }, {
-                "descripcion": "Doble",
-                "precio": "1000"
-            }, {
-                "descripcion": "Triple",
-                "precio": "900"
-            }, {
-                "descripcion": "Cuadruple",
-                "precio": "700"
-            }, {
-                "descripcion": "Quintuple",
-                "precio": "500"
-            }]
-    }]
-
+        "cupo": 15,
+        "estado": "EnVenta",
+        "unidad": {
+          "nroUnidad": 24,
+          "cantAsientos": 44,
+          "dominio": "AAA024",
+          "marca": "Scania",
+          "tipo": "Semicama"
+        }
+      }
+    ],
+    "servicios": [],
+    "listaBasePaquetes": [
+      {
+        "descripcion": "Simple",
+        "precio": 1500.0
+      },
+      {
+        "descripcion": "Doble",
+        "precio": 1000.0
+      },
+      {
+        "descripcion": "Triple",
+        "precio": 900.0
+      },
+      {
+        "descripcion": "Cuadruple",
+        "precio": 700.0
+      },
+      {
+        "descripcion": "Quintuple",
+        "precio": 500.0
+      }
+    ]
+  }
+]
