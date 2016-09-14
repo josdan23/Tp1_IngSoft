@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -11,11 +11,11 @@ public class Butaca extends Servicio {
     private int nroButaca;
     private boolean estado;
     private Unidad unidad;
-    
+
     public Butaca() {
     }
 
-    public Butaca(int nroButaca, boolean estado, Date FechaDesde, Date FechaHasta, Unidad unidad) {
+    public Butaca(int nroButaca, boolean estado, Calendar FechaDesde, Calendar FechaHasta, Unidad unidad) {
         super(FechaDesde, FechaHasta);
         this.nroButaca = nroButaca;
         this.estado = estado;
@@ -45,5 +45,5 @@ public class Butaca extends Servicio {
     public void setUnidad(Unidad unidad) {
         this.unidad = unidad;
     }
-    
+
 }
