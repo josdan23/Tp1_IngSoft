@@ -1,7 +1,7 @@
 package presenter;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import model.Paquete;
 import model.Unidad;
 
@@ -19,7 +19,7 @@ public interface ICrearSalida {
 
     String obtenerUnidadSeleccionado();
 
-    Date obtenerFecha();
+    Calendar obtenerFecha();
 
     int obtenerCupos();
 
