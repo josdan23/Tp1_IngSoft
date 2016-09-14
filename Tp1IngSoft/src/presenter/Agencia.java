@@ -1,7 +1,7 @@
 package presenter;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import service.AdaptadorTransporte;
 import model.BasePaquete;
 import model.Butaca;
@@ -29,7 +29,6 @@ public class Agencia {
     private ArrayList<Butaca> butacas;
     private ArrayList<Unidad> unidades;
     /*este atributo sirve para mantener una referncia a la salida creada
-      durante los 2 casos de uso
      */
     private Salida salida;
     /*usado en los dos casos de uso para referenciar al paquete que se extrae
@@ -89,7 +88,7 @@ public class Agencia {
         }
     }
 
-    public void ingresarFecha(Date fecha) {
+    public void ingresarFecha(Calendar fecha) {
         this.salida.setFecha(fecha);
     }
 
@@ -103,8 +102,16 @@ public class Agencia {
                 getAdaptadorTransporte().
                 vincularUnidad(this.salida.getUnidad().
                         getNroUnidad())) {
+            this.salida.generarCodigoSalida();
             this.salida.setEstado(Estado.EnVenta);
             this.paquete.agregarSalida(salida);
+            for (Paquete p : paquetes) {
+                if (p.getCodPaquete().equals(this.paquete.getCodPaquete())) {
+                    this.paquetes.set(this.paquetes.indexOf(p), this.paquete);
+                    break;
+                }
+            }
+            this.catalogoPaquetes.almacenarPaquetes(paquetes);
             this.vistaCrearSalida.mostrarAlerta("SALIDA CONFIRMADA!", "INFO");
             System.out.println("Salida Confiramada!");
         } else {
