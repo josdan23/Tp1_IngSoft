@@ -1,7 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -24,11 +24,11 @@ public class CatalogoDePaquete {
                 new Ciudad(1, "xxxx"), listaBasePaquetes);
 
         ArrayList<Salida> salidas = new ArrayList<>();
-        salidas.add(new Salida("xyxyx",new Date(), 20, Estado.EnVenta,
+        salidas.add(new Salida("xyxyx", Calendar.getInstance(), 20, Estado.EnVenta,
                 new Unidad(1, 44, "AXA112", "SCANIA", "CAMA")));
-        salidas.add(new Salida("zzzzwwz",new Date(), 20, Estado.EnEjecucion,
+        salidas.add(new Salida("zzzzwwz", Calendar.getInstance(), 20, Estado.EnEjecucion,
                 new Unidad(1, 44, "AXA112", "SCANIA", "CAMA")));
-        salidas.add(new Salida("abcbac",new Date(), 20, Estado.EnVenta,
+        salidas.add(new Salida("abcbac", Calendar.getInstance(), 20, Estado.EnVenta,
                 new Unidad(1, 44, "AXA112", "SCANIA", "CAMA")));
         p1.setSalidas(salidas);
 
