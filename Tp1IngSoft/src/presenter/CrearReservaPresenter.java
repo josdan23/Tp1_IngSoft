@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import model.BasePaquete;
 import model.Butaca;
 import model.CatalogoDePaquete;
+import model.CatalogoDePaquetesJson;
 import model.Paquete;
 import model.Reserva;
 import model.Salida;
@@ -27,14 +28,14 @@ public class CrearReservaPresenter {
     private ArrayList<Paquete> paquetes;
     private ArrayList<Salida> salidas;
     private ArrayList<Butaca> butacas;
-    private CatalogoDePaquete catalogoPaquetes;
+    private CatalogoDePaquetesJson catalogoPaquetes;
     private ICrearReserva vista;
 
     public CrearReservaPresenter(ICrearReserva vista) {
         this.paquetes = new ArrayList<>();
         this.salidas = new ArrayList<>();
         this.butacas = new ArrayList<>();
-        this.catalogoPaquetes = new CatalogoDePaquete();
+        this.catalogoPaquetes = new CatalogoDePaquetesJson();
         this.vista = vista;
     }
 
