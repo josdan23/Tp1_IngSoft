@@ -20,9 +20,6 @@ public class Paquete {
     private ArrayList<Servicio> servicios;
     private ArrayList<BasePaquete> listaBasePaquetes;
 
-    public Paquete() {
-    }
-
     public Paquete(String codPaquete, String nombre, String descripcion,
             String itinerario, String condicionesComerciales,
             int nroDias, int nroNoches, Ciudad ciudad, ArrayList<BasePaquete> listaBasePaquetes) {
@@ -34,6 +31,12 @@ public class Paquete {
         this.nroDias = nroDias;
         this.nroNoches = nroNoches;
         this.ciudadOrigen = ciudad;
+        this.salidas = new ArrayList<>();
+        this.servicios = new ArrayList<>();
+        this.listaBasePaquetes = listaBasePaquetes;
+    }
+
+    public Paquete() {
         this.salidas = new ArrayList<>();
         this.servicios = new ArrayList<>();
         this.listaBasePaquetes = listaBasePaquetes;
@@ -116,6 +119,7 @@ public class Paquete {
     }
 
     public void agregarSalida(Salida salida) {
+        this.salidas.add(salida);
     }
 
     public ArrayList<Salida> obtenerSalidasEnVenta() {
