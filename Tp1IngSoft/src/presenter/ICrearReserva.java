@@ -29,4 +29,6 @@ public interface ICrearReserva {
 
     String obtenerCorreo();
 
+    void mostrarAlerta(String msj, String title, String tipo);
+
 }
