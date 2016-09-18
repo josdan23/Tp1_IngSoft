@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.util.ArrayList;
@@ -10,6 +5,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import model.Butaca;
 import model.Paquete;
 import model.Salida;
@@ -18,10 +14,10 @@ import presenter.ICrearReserva;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Pablo Fernández
  */
 public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
-    
+
     private CrearReservaPresenter presentador;
     private DefaultComboBoxModel paquetesModel;
     private HashMap<String, String> paquetes;
@@ -33,6 +29,8 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
      */
     public CrearReserva() {
         initComponents();
+        initActionComands();
+        this.setLocationRelativeTo(null);
         this.paquetesModel = new DefaultComboBoxModel();
         this.paquetes = new HashMap<>();
         this.salidasModel = new DefaultComboBoxModel();
@@ -102,7 +100,7 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
         butaca42 = new javax.swing.JCheckBox();
         butaca43 = new javax.swing.JCheckBox();
         butaca44 = new javax.swing.JCheckBox();
-        jPanel1 = new javax.swing.JPanel();
+        panelCliente = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -117,24 +115,64 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
 
+        panelReserva.setLayout(new java.awt.GridBagLayout());
+
         lblCrearNuevaReserva.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblCrearNuevaReserva.setText("CREAR NUEVA RESERVA");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(28, 123, 0, 0);
+        panelReserva.add(lblCrearNuevaReserva, gridBagConstraints);
 
         lblPaquete.setText("PAQUETE");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LAST_LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(35, 22, 0, 0);
+        panelReserva.add(lblPaquete, gridBagConstraints);
 
         cmbPaquetes.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbPaquetesItemStateChanged(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 507;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(30, 38, 0, 36);
+        panelReserva.add(cmbPaquetes, gridBagConstraints);
 
         lblSalida.setText("SALIDA");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(35, 22, 0, 0);
+        panelReserva.add(lblSalida, gridBagConstraints);
 
         cmbSalidas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbSalidasItemStateChanged(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 507;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(55, 38, 0, 36);
+        panelReserva.add(cmbSalidas, gridBagConstraints);
 
         panelButacas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Butacas"));
         panelButacas.setLayout(new java.awt.GridBagLayout());
@@ -373,133 +411,126 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
         gridBagConstraints.gridy = 3;
         panelButacas.add(butaca44, gridBagConstraints);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cliente"));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 160;
+        gridBagConstraints.ipady = 25;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        panelReserva.add(panelButacas, gridBagConstraints);
+
+        panelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cliente"));
+        panelCliente.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("NOMBRE");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.insets = new java.awt.Insets(5, 22, 0, 0);
+        panelCliente.add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("DNI");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 22, 0, 0);
+        panelCliente.add(jLabel2, gridBagConstraints);
 
         jLabel3.setText("TELEFONO");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.insets = new java.awt.Insets(5, 22, 0, 0);
+        panelCliente.add(jLabel3, gridBagConstraints);
 
         jLabel4.setText("CORREO");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 22, 11, 0);
+        panelCliente.add(jLabel4, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 574;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 10, 5);
+        panelCliente.add(txtNombreCliente, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 574;
+        gridBagConstraints.weighty = 0.5;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 10, 5);
+        panelCliente.add(txtDniCliente, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 574;
+        gridBagConstraints.weighty = 0.5;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 10, 5);
+        panelCliente.add(txtTelefonoCliente, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 574;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 10, 5);
+        panelCliente.add(txtCorreoCliente, gridBagConstraints);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCorreoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDniCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
-                            .addComponent(txtNombreCliente))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtDniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtCorreoCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 507;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        panelReserva.add(panelCliente, gridBagConstraints);
 
         btnConfirmarReserva.setText("CONFIRMAR");
+        btnConfirmarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarReservaActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHEAST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 18, 6, 36);
+        panelReserva.add(btnConfirmarReserva, gridBagConstraints);
 
         btnCancelarReserva.setText("CANCELAR");
-
-        javax.swing.GroupLayout panelReservaLayout = new javax.swing.GroupLayout(panelReserva);
-        panelReserva.setLayout(panelReservaLayout);
-        panelReservaLayout.setHorizontalGroup(
-            panelReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelReservaLayout.createSequentialGroup()
-                .addGroup(panelReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelReservaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCancelarReserva)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnConfirmarReserva))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelReservaLayout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(lblCrearNuevaReserva)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelReservaLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(panelReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelReservaLayout.createSequentialGroup()
-                                .addComponent(lblSalida)
-                                .addGap(49, 49, 49)
-                                .addComponent(cmbSalidas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(panelReservaLayout.createSequentialGroup()
-                                .addComponent(lblPaquete)
-                                .addGap(37, 37, 37)
-                                .addComponent(cmbPaquetes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(panelButacas, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(19, 19, 19))
-        );
-        panelReservaLayout.setVerticalGroup(
-            panelReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelReservaLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(lblCrearNuevaReserva)
-                .addGap(36, 36, 36)
-                .addGroup(panelReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPaquete)
-                    .addComponent(cmbPaquetes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(panelReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSalida)
-                    .addComponent(cmbSalidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(panelButacas, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(panelReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConfirmarReserva)
-                    .addComponent(btnCancelarReserva)))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHEAST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(18, 18, 6, 0);
+        panelReserva.add(btnCancelarReserva, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+            .addComponent(panelReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -509,13 +540,6 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
         // TODO add your handling code here:
     }//GEN-LAST:event_butaca37ActionPerformed
 
-    private void cmbPaquetesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPaquetesItemStateChanged
-        if (!evt.getItem().toString().equals("---Seleccionar Paquete---")) {
-            this.presentador.seleccionarPaquetesReserva(this.obtenerPaqueteSeleccionado());
-            System.out.println(evt.getItem().toString());
-        }
-    }//GEN-LAST:event_cmbPaquetesItemStateChanged
-
     private void cmbSalidasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSalidasItemStateChanged
         if (!evt.getItem().toString().equals("---Seleccionar Salida---")) {
             this.presentador.seleccionarSalida(this.obtenerSalidaSeleccionada());
@@ -523,41 +547,112 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
         }
     }//GEN-LAST:event_cmbSalidasItemStateChanged
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CrearReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CrearReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CrearReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CrearReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void cmbPaquetesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPaquetesItemStateChanged
+        if (!evt.getItem().toString().equals("---Seleccionar Paquete---")) {
+            this.presentador.seleccionarPaquetesReserva(this.obtenerPaqueteSeleccionado());
+            System.out.println(evt.getItem().toString());
         }
-        //</editor-fold>
+    }//GEN-LAST:event_cmbPaquetesItemStateChanged
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CrearReserva().setVisible(true);
-            }
-        });
+    private void btnConfirmarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarReservaActionPerformed
+        if (this.validarCampos()) {
+            this.presentador.confirmarReserva();
+        }
+     }//GEN-LAST:event_btnConfirmarReservaActionPerformed
+
+    private void initActionComands() {
+        CrearReservaCheckBoxEvent listener = new CrearReservaCheckBoxEvent(this);
+        this.butaca1.setActionCommand("BUTACA_1");
+        this.butaca1.addActionListener(listener);
+        this.butaca2.setActionCommand("BUTACA_2");
+        this.butaca2.addActionListener(listener);
+        this.butaca3.setActionCommand("BUTACA_3");
+        this.butaca3.addActionListener(listener);
+        this.butaca4.setActionCommand("BUTACA_4");
+        this.butaca4.addActionListener(listener);
+        this.butaca5.setActionCommand("BUTACA_5");
+        this.butaca5.addActionListener(listener);
+        this.butaca6.setActionCommand("BUTACA_6");
+        this.butaca6.addActionListener(listener);
+        this.butaca7.setActionCommand("BUTACA_7");
+        this.butaca7.addActionListener(listener);
+        this.butaca8.setActionCommand("BUTACA_8");
+        this.butaca8.addActionListener(listener);
+        this.butaca9.setActionCommand("BUTACA_9");
+        this.butaca9.addActionListener(listener);
+        this.butaca10.setActionCommand("BUTACA_10");
+        this.butaca10.addActionListener(listener);
+        this.butaca11.setActionCommand("BUTACA_11");
+        this.butaca11.addActionListener(listener);
+        this.butaca12.setActionCommand("BUTACA_12");
+        this.butaca12.addActionListener(listener);
+        this.butaca13.setActionCommand("BUTACA_13");
+        this.butaca13.addActionListener(listener);
+        this.butaca14.setActionCommand("BUTACA_14");
+        this.butaca14.addActionListener(listener);
+        this.butaca15.setActionCommand("BUTACA_15");
+        this.butaca15.addActionListener(listener);
+        this.butaca16.setActionCommand("BUTACA_16");
+        this.butaca16.addActionListener(listener);
+        this.butaca17.setActionCommand("BUTACA_17");
+        this.butaca17.addActionListener(listener);
+        this.butaca18.setActionCommand("BUTACA_18");
+        this.butaca18.addActionListener(listener);
+        this.butaca19.setActionCommand("BUTACA_19");
+        this.butaca19.addActionListener(listener);
+        this.butaca20.setActionCommand("BUTACA_20");
+        this.butaca20.addActionListener(listener);
+        this.butaca21.setActionCommand("BUTACA_21");
+        this.butaca21.addActionListener(listener);
+        this.butaca22.setActionCommand("BUTACA_22");
+        this.butaca22.addActionListener(listener);
+        this.butaca23.setActionCommand("BUTACA_23");
+        this.butaca23.addActionListener(listener);
+        this.butaca24.setActionCommand("BUTACA_24");
+        this.butaca24.addActionListener(listener);
+        this.butaca25.setActionCommand("BUTACA_25");
+        this.butaca25.addActionListener(listener);
+        this.butaca26.setActionCommand("BUTACA_26");
+        this.butaca26.addActionListener(listener);
+        this.butaca27.setActionCommand("BUTACA_27");
+        this.butaca27.addActionListener(listener);
+        this.butaca28.setActionCommand("BUTACA_28");
+        this.butaca28.addActionListener(listener);
+        this.butaca29.setActionCommand("BUTACA_29");
+        this.butaca29.addActionListener(listener);
+        this.butaca30.setActionCommand("BUTACA_30");
+        this.butaca30.addActionListener(listener);
+        this.butaca31.setActionCommand("BUTACA_31");
+        this.butaca31.addActionListener(listener);
+        this.butaca32.setActionCommand("BUTACA_32");
+        this.butaca32.addActionListener(listener);
+        this.butaca33.setActionCommand("BUTACA_33");
+        this.butaca33.addActionListener(listener);
+        this.butaca34.setActionCommand("BUTACA_34");
+        this.butaca34.addActionListener(listener);
+        this.butaca35.setActionCommand("BUTACA_35");
+        this.butaca35.addActionListener(listener);
+        this.butaca36.setActionCommand("BUTACA_36");
+        this.butaca36.addActionListener(listener);
+        this.butaca37.setActionCommand("BUTACA_37");
+        this.butaca37.addActionListener(listener);
+        this.butaca38.setActionCommand("BUTACA_38");
+        this.butaca38.addActionListener(listener);
+        this.butaca39.setActionCommand("BUTACA_39");
+        this.butaca39.addActionListener(listener);
+        this.butaca40.setActionCommand("BUTACA_40");
+        this.butaca40.addActionListener(listener);
+        this.butaca41.setActionCommand("BUTACA_41");
+        this.butaca41.addActionListener(listener);
+        this.butaca42.setActionCommand("BUTACA_42");
+        this.butaca42.addActionListener(listener);
+        this.butaca43.setActionCommand("BUTACA_43");
+        this.butaca43.addActionListener(listener);
+        this.butaca44.setActionCommand("BUTACA_44");
+        this.butaca44.addActionListener(listener);
+
     }
-    
+
     @Override
     public void cargarPaquetes(ArrayList<Paquete> paquetes) {
         this.paquetesModel.addElement("---Seleccionar Paquete---");
@@ -567,12 +662,12 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
         }
         this.cmbPaquetes.setModel(paquetesModel);
     }
-    
+
     @Override
     public String obtenerPaqueteSeleccionado() {
         return this.paquetes.get(this.cmbPaquetes.getSelectedItem().toString());
     }
-    
+
     @Override
     public void cargarSalidas(ArrayList<Salida> salidas) {
         this.salidasModel.removeAllElements();
@@ -588,214 +683,331 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
         }
         this.cmbSalidas.setModel(salidasModel);
     }
-    
+
     @Override
     public String obtenerSalidaSeleccionada() {
         return this.salidas.get(this.cmbSalidas.getSelectedItem().toString());
     }
-    
+
     @Override
     public void cargarButacas(ArrayList<Butaca> butacas) {
         for (Butaca butaca : butacas) {
             switch (butaca.getNroButaca()) {
                 case 1:
-                    this.butaca1.setSelected(true);
-                    this.butaca1.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca1.setSelected(true);
+                        this.butaca1.setEnabled(false);
+                    }
                     break;
                 case 2:
-                    this.butaca2.setSelected(true);
-                    this.butaca2.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca2.setSelected(true);
+                        this.butaca2.setEnabled(false);
+                    }
                     break;
                 case 3:
-                    this.butaca3.setSelected(true);
-                    this.butaca3.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca3.setSelected(true);
+                        this.butaca3.setEnabled(false);
+                    }
                     break;
                 case 4:
-                    this.butaca4.setSelected(true);
-                    this.butaca4.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca4.setSelected(true);
+                        this.butaca4.setEnabled(false);
+                    }
                     break;
                 case 5:
-                    this.butaca5.setSelected(true);
-                    this.butaca5.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca5.setSelected(true);
+                        this.butaca5.setEnabled(false);
+                    }
                     break;
                 case 6:
-                    this.butaca6.setSelected(true);
-                    this.butaca6.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca6.setSelected(true);
+                        this.butaca6.setEnabled(false);
+                    }
                     break;
                 case 7:
-                    this.butaca7.setSelected(true);
-                    this.butaca7.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca7.setSelected(true);
+                        this.butaca7.setEnabled(false);
+                    }
                     break;
                 case 8:
-                    this.butaca8.setSelected(true);
-                    this.butaca8.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca8.setSelected(true);
+                        this.butaca8.setEnabled(false);
+                    }
                     break;
                 case 9:
-                    this.butaca9.setSelected(true);
-                    this.butaca9.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca9.setSelected(true);
+                        this.butaca9.setEnabled(false);
+                    }
                     break;
                 case 10:
-                    this.butaca10.setSelected(true);
-                    this.butaca10.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca10.setSelected(true);
+                        this.butaca10.setEnabled(false);
+                    }
                     break;
                 case 11:
-                    this.butaca11.setSelected(true);
-                    this.butaca11.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca11.setSelected(true);
+                        this.butaca11.setEnabled(false);
+                    }
                     break;
                 case 12:
-                    this.butaca12.setSelected(true);
-                    this.butaca12.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca12.setSelected(true);
+                        this.butaca12.setEnabled(false);
+                    }
                     break;
                 case 13:
-                    this.butaca13.setSelected(true);
-                    this.butaca13.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca13.setSelected(true);
+                        this.butaca13.setEnabled(false);
+                    }
                     break;
                 case 14:
-                    this.butaca14.setSelected(true);
-                    this.butaca14.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca14.setSelected(true);
+                        this.butaca14.setEnabled(false);
+                    }
                     break;
                 case 15:
-                    this.butaca15.setSelected(true);
-                    this.butaca15.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca15.setSelected(true);
+                        this.butaca15.setEnabled(false);
+                    }
                     break;
                 case 16:
-                    this.butaca16.setSelected(true);
-                    this.butaca16.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca16.setSelected(true);
+                        this.butaca16.setEnabled(false);
+                    }
                     break;
                 case 17:
-                    this.butaca17.setSelected(true);
-                    this.butaca17.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca17.setSelected(true);
+                        this.butaca17.setEnabled(false);
+                    }
                     break;
                 case 18:
-                    this.butaca18.setSelected(true);
-                    this.butaca18.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca18.setSelected(true);
+                        this.butaca18.setEnabled(false);
+                    }
                     break;
                 case 19:
-                    this.butaca19.setSelected(true);
-                    this.butaca19.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca19.setSelected(true);
+                        this.butaca19.setEnabled(false);
+                    }
                     break;
                 case 20:
-                    this.butaca20.setSelected(true);
-                    this.butaca20.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca20.setSelected(true);
+                        this.butaca20.setEnabled(false);
+                    }
                     break;
                 case 21:
-                    this.butaca21.setSelected(true);
-                    this.butaca21.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca21.setSelected(true);
+                        this.butaca21.setEnabled(false);
+                    }
                     break;
                 case 22:
-                    this.butaca22.setSelected(true);
-                    this.butaca22.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca22.setSelected(true);
+                        this.butaca22.setEnabled(false);
+                    }
                     break;
                 case 23:
-                    this.butaca23.setSelected(true);
-                    this.butaca23.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca23.setSelected(true);
+                        this.butaca23.setEnabled(false);
+                    }
                     break;
                 case 24:
-                    this.butaca24.setSelected(true);
-                    this.butaca24.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca24.setSelected(true);
+                        this.butaca24.setEnabled(false);
+                    }
                     break;
                 case 25:
-                    this.butaca25.setSelected(true);
-                    this.butaca25.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca25.setSelected(true);
+                        this.butaca25.setEnabled(false);
+                    }
                     break;
                 case 26:
-                    this.butaca26.setSelected(true);
-                    this.butaca26.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca26.setSelected(true);
+                        this.butaca26.setEnabled(false);
+                    }
                     break;
                 case 27:
-                    this.butaca27.setSelected(true);
-                    this.butaca27.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca27.setSelected(true);
+                        this.butaca27.setEnabled(false);
+                    }
                     break;
                 case 28:
-                    this.butaca28.setSelected(true);
-                    this.butaca28.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca28.setSelected(true);
+                        this.butaca28.setEnabled(false);
+                    }
                     break;
                 case 29:
-                    this.butaca29.setSelected(true);
-                    this.butaca29.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca29.setSelected(true);
+                        this.butaca29.setEnabled(false);
+                    }
                     break;
                 case 30:
-                    this.butaca30.setSelected(true);
-                    this.butaca30.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca30.setSelected(true);
+                        this.butaca30.setEnabled(false);
+                    }
                     break;
                 case 31:
-                    this.butaca31.setSelected(true);
-                    this.butaca31.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca31.setSelected(true);
+                        this.butaca31.setEnabled(false);
+                    }
                     break;
                 case 32:
-                    this.butaca32.setSelected(true);
-                    this.butaca32.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca32.setSelected(true);
+                        this.butaca32.setEnabled(false);
+                    }
                     break;
                 case 33:
-                    this.butaca33.setSelected(true);
-                    this.butaca33.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca33.setSelected(true);
+                        this.butaca33.setEnabled(false);
+                    }
                     break;
                 case 34:
-                    this.butaca34.setSelected(true);
-                    this.butaca34.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca34.setSelected(true);
+                        this.butaca34.setEnabled(false);
+                    }
                     break;
                 case 35:
-                    this.butaca35.setSelected(true);
-                    this.butaca35.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca35.setSelected(true);
+                        this.butaca35.setEnabled(false);
+                    }
                     break;
                 case 36:
-                    this.butaca36.setSelected(true);
-                    this.butaca36.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca36.setSelected(true);
+                        this.butaca36.setEnabled(false);
+                    }
                     break;
                 case 37:
-                    this.butaca37.setSelected(true);
-                    this.butaca37.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca37.setSelected(true);
+                        this.butaca37.setEnabled(false);
+                    }
                     break;
                 case 38:
-                    this.butaca38.setSelected(true);
-                    this.butaca38.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca38.setSelected(true);
+                        this.butaca38.setEnabled(false);
+                    }
                     break;
                 case 39:
-                    this.butaca39.setSelected(true);
-                    this.butaca39.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca39.setSelected(true);
+                        this.butaca39.setEnabled(false);
+                    }
                     break;
                 case 40:
-                    this.butaca40.setSelected(true);
-                    this.butaca40.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca40.setSelected(true);
+                        this.butaca40.setEnabled(false);
+                    }
                     break;
                 case 41:
-                    this.butaca41.setSelected(true);
-                    this.butaca41.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca41.setSelected(true);
+                        this.butaca41.setEnabled(false);
+                    }
                     break;
                 case 42:
-                    this.butaca42.setSelected(true);
-                    this.butaca42.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca42.setSelected(true);
+                        this.butaca42.setEnabled(false);
+                    }
                     break;
                 case 43:
-                    this.butaca43.setSelected(true);
-                    this.butaca43.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca43.setSelected(true);
+                        this.butaca43.setEnabled(false);
+                    }
                     break;
                 case 44:
-                    this.butaca44.setSelected(true);
-                    this.butaca44.setEnabled(false);
+                    if (butaca.isEstado()) {
+                        this.butaca44.setSelected(true);
+                        this.butaca44.setEnabled(false);
+                    }
                     break;
             }
         }
     }
-    
+
     @Override
     public String obtenerNombre() {
         return this.txtNombreCliente.getText();
     }
-    
+
     @Override
     public long obtenerDni() {
         return Long.parseLong(this.txtDniCliente.getText());
     }
-    
+
     @Override
     public String obtenerTelefono() {
         return this.txtTelefonoCliente.getText();
     }
-    
+
     @Override
     public String obtenerCorreo() {
         return this.txtCorreoCliente.getText();
+    }
+
+    @Override
+    public void mostrarAlerta(String msj, String title, String tipo) {
+        switch (tipo) {
+            case "INFO":
+                JOptionPane.showMessageDialog(this, msj, title,
+                        JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case "ERROR":
+                JOptionPane.showMessageDialog(this, msj, title,
+                        JOptionPane.ERROR_MESSAGE);
+                break;
+            case "ADVERTENCIA":
+                JOptionPane.showMessageDialog(this, msj, title,
+                        JOptionPane.WARNING_MESSAGE);
+                break;
+        }
+    }
+
+    private boolean validarCampos() {
+        return !this.txtNombreCliente.getText().equals("")
+                && !this.txtDniCliente.getText().equals("")
+                && !this.txtTelefonoCliente.getText().equals("")
+                && !this.txtCorreoCliente.getText().equals("");
+    }
+
+    public CrearReservaPresenter getPresentador() {
+        return presentador;
     }
 
 
@@ -852,11 +1064,11 @@ public class CrearReserva extends javax.swing.JFrame implements ICrearReserva {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCrearNuevaReserva;
     private javax.swing.JLabel lblPaquete;
     private javax.swing.JLabel lblSalida;
     private javax.swing.JPanel panelButacas;
+    private javax.swing.JPanel panelCliente;
     private javax.swing.JPanel panelReserva;
     private javax.swing.JTextField txtCorreoCliente;
     private javax.swing.JTextField txtDniCliente;
