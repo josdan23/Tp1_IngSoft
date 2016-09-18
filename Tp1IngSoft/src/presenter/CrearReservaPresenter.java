@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presenter;
 
 import java.util.ArrayList;
@@ -95,9 +90,9 @@ public class CrearReservaPresenter {
         }
 
         //ATENCION! FALTA CALCULAR EL TOTAL DE LA RESERVA
-        this.basePaquete = this.paquete.getListaBasePaquetes().get(cantPasajeros - 1);
+        //this.basePaquete = this.paquete.getListaBasePaquetes().get(cantPasajeros - 1);
 
-        this.reserva.setTotal(this.basePaquete.getPrecio());
+        //this.reserva.setTotal(this.basePaquete.getPrecio());
     }
 
     public void seleccionarButaca(int nroButaca) {
@@ -114,6 +109,11 @@ public class CrearReservaPresenter {
     }
 
     public void confirmarReserva() {
+        this.ingresarCantPasajeros(this.reserva.getButacas().size());
+        this.ingresarCliente(this.vista.obtenerNombre(),
+                this.vista.obtenerDni(),
+                this.vista.obtenerTelefono(),
+                this.vista.obtenerCorreo());
         int[] nroDeButacas = this.reserva.obtenerButacas();
         if (FactoriaServicios.
                 getInstancia().
@@ -121,8 +121,11 @@ public class CrearReservaPresenter {
                 reservarButacas(this.salida.getUnidad().
                         getNroUnidad(), nroDeButacas)) {
             this.salida.agregarReserva(this.reserva);
+            this.vista.mostrarAlerta("Reserva confirmada!",
+                    "Reserva exitosa", "INFO");
         } else {
-            // avisar a la interfaz grafica que no se pudieron reservas las butacas
+            this.vista.mostrarAlerta("No se pudieron reservar las butacas",
+                    "INFO", "ADVERTENCIA");
         }
     }
 
